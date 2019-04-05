@@ -12,13 +12,17 @@
       [nzMode]="'inline'"
       [nzInlineCollapsed]="isCollapsed"
     >
+
+
       <li nz-submenu>
         <span title
           ><i nz-icon type="user"></i
           ><span class="nav-text">Fakultet</span></span
         >
         <ul>
-          <li nz-menu-item></li>
+            <li nz-menu-item routerLink="/e-radovi/fakultet" >Fakultet</li>
+            <li nz-menu-item routerLink="/e-radovi/odjeli" >Odjeli</li>
+            <li nz-menu-item routerLink="/e-radovi/ucitaj" >Ucitaj</li>
         </ul>
       </li>
       <li nz-submenu>
@@ -41,7 +45,7 @@
     <nz-content style="margin:0 16px;">
       <nz-breadcrumb style="margin:16px 0;"> </nz-breadcrumb>
       <div style="padding:24px; background: #fff; min-height: 600px;">
-        lallalal
+        <router-outlet></router-outlet>
       </div>
     </nz-content>
     <nz-footer style="text-align: center;"

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ApiService } from "../api.service";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { ApiService } from '../../api.service';
 
 
 @Component({
@@ -39,10 +39,12 @@ export class UcitajComponent  {
 
   public kreirajDatoteku(): void {
     let payload = new FormData();
-
+    
+    // payload.append('rad_id', this.myForm.value.rad_id);
+    // payload.append('status_verzije_id', this.myForm.value.status_verzije_id);
     payload.append('datoteka', this.selectedFile,this.selectedFile.name);
 
-    this.apiService.kreirajDatoteku(this.myForm.value.rad_id , payload , this.myForm.value.status_verzije_id ).subscribe(
+    this.apiService.kreirajDatoteku(this.myForm.value.rad_id, payload).subscribe(
       response => console.log(response),
 
       error => console.log(error)

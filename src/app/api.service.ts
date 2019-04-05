@@ -59,15 +59,9 @@ export class ApiService {
   //-----------------------------------------------------------------------------------------
 
   
-  public kreirajDatoteku(rad_id: number, payload: FormData, status_verzije_id: number): Observable<any> {
-    
-    let fd ={
-      rad_id: rad_id,
-      datoteka: payload
-    }
-    
+  public kreirajDatoteku(rad_id: number, payload: FormData): Observable<any> {    
     return <any>(
-      this.http.post(this.url + "/ucitaj/"+ rad_id ,fd, this.getHttpOptions())
+      this.http.post(this.url + "/ucitaj/"+ rad_id ,payload, this.getHttpOptions())
     );
   }
 

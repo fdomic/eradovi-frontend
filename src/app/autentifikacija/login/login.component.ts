@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
-
+import { ApiService } from '../../api.service';
 
 @Component({
   selector: "app-login",
@@ -14,7 +13,14 @@ export class LoginComponent implements OnInit {
     password: "filip"
   };
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService, private router: Router) {
+
+    let token = localStorage.getItem("AUTH_TOKEN");
+    if(token) {
+      this.router.navigate(['e-radovi']);
+    }
+
+  }
 
   onSubmit() {
 
@@ -24,7 +30,7 @@ export class LoginComponent implements OnInit {
         if(response && response.token) {
           localStorage.setItem("AUTH_TOKEN", response.token);
         }
-        this.router.navigate(['navigation'])
+        this.router.navigate(['e-radovi']);
       },
       error => console.log(error)
     );
