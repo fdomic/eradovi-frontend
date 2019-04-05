@@ -1,0 +1,11 @@
+<form [formGroup]="this.myForm">
+ 
+  <select formControlName="fakultet_id">
+    <ng-container *ngFor="let fakultet of this.fakulteti">
+      <option  [value]="fakultet.id">{{ fakultet.naziv }}</option>
+    </ng-container>
+  </select>
+  <br />
+  <input formControlName="naziv" /> <br />
+  <button (click)="this.kreirajOdjel()">Kreiraj odjel</button>
+</form>

@@ -1,0 +1,51 @@
+<nz-layout>
+  <nz-sider
+    nzCollapsible
+    [(nzCollapsed)]="isCollapsed"
+    [nzWidth]="width"
+    [nzReverseArrow]="isReverseArrow"
+  >
+    <div class="logo"></div>
+    <ul
+      nz-menu
+      [nzTheme]="'dark'"
+      [nzMode]="'inline'"
+      [nzInlineCollapsed]="isCollapsed"
+    >
+      <li nz-submenu>
+        <span title
+          ><i nz-icon type="user"></i
+          ><span class="nav-text">Fakultet</span></span
+        >
+        <ul>
+          <li nz-menu-item></li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title
+          ><i nz-icon type="team"></i><span class="nav-text">Odjel</span></span
+        >
+        <ul>
+          <li nz-menu-item></li>
+        </ul>
+      </li>
+      <li nz-menu-item>
+        <span
+          ><i nz-icon type="file"></i><span class="nav-text">File</span></span
+        >
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header style="background: #fff; padding:0;"></nz-header>
+    <nz-content style="margin:0 16px;">
+      <nz-breadcrumb style="margin:16px 0;"> </nz-breadcrumb>
+      <div style="padding:24px; background: #fff; min-height: 600px;">
+        lallalal
+      </div>
+    </nz-content>
+    <nz-footer style="text-align: center;"
+      >Ant Design ©2019 Implement By Filip</nz-footer
+    >
+  </nz-layout>
+</nz-layout>

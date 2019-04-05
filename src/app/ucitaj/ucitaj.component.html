@@ -1,0 +1,15 @@
+<form  [formGroup]="this.myForm">
+  
+    <input  formControlName="rad_id"  /> <br />
+
+    <input  type="file" formControlName="datoteka" (change)="ucitajDatoteku($event)" /><br />
+
+    <input  formControlName="status_verzije_id"  /> <br />
+
+    <button (click)="this.kreirajDatoteku()">spremi</button>
+  
+
+</form>
+
+
+
