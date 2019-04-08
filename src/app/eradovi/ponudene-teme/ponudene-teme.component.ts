@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
 
 @Component({
-  selector: 'app-rad',
-  templateUrl: './rad.component.html',
-  styleUrls: ['./rad.component.scss']
+  selector: 'app-ponudene-teme',
+  templateUrl: './ponudene-teme.component.html',
+  styleUrls: ['./ponudene-teme.component.scss']
 })
-export class RadComponent  {
+export class PonudeneTemeComponent{
 
+  
   public myForm: FormGroup;
 
   constructor(private fb: FormBuilder, private apiService: ApiService) {
@@ -22,7 +23,7 @@ export class RadComponent  {
   private kreirajFormu(): void {
     this.myForm = this.fb.group({
      
-      statusi_rada_id: '1',
+      rad_id:'',
       djelatnik_id: '',
       naziv_hr: '',
       opis_hr: '',
@@ -38,9 +39,9 @@ export class RadComponent  {
 
   // ========= HTML METODE =========
 
-  public kreirajrad(): void {
-    this.apiService.kreirajrad( 
-      this.myForm.value.statusi_rada_id, 
+  public kreirajPonudenuTemu(): void {
+    this.apiService.kreirajPonudenuTemu( 
+      this.myForm.value.rad_id, 
       this.myForm.value.djelatnik_id,
 
       this.myForm.value.naziv_hr,
@@ -58,4 +59,5 @@ export class RadComponent  {
       error => console.log(error)
     );
   }
+
 }

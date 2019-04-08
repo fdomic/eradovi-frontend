@@ -9,7 +9,8 @@ import { DjelatnikComponent } from './djelatnik/djelatnik.component';
 import { OdjelDjelatnikaComponent } from './odjel-djelatnika/odjel-djelatnika.component';
 import { StudentComponent } from './student/student.component';
 import { AutentifikacijaGuardService } from '../autentifikacija/autentifikacija.guard';
-
+import { RadComponent } from './rad/rad.component';
+import { PonudeneTemeComponent } from './ponudene-teme/ponudene-teme.component';
 
 const EradoviRoutes: Routes = [
   {
@@ -27,7 +28,8 @@ const EradoviRoutes: Routes = [
       { component: DjelatnikComponent, path: "djelatnik" },
       { component: StudentComponent, path: "student" },
       { component: OdjelDjelatnikaComponent, path: "odjel-djelatnika" },
-
+      { component: RadComponent, path: "rad" },
+      { component: PonudeneTemeComponent, path: "ponudene-teme" },
       { path: "**", redirectTo: "fakultet", pathMatch: "full" }
     ]
   }

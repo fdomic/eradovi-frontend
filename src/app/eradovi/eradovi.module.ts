@@ -10,6 +10,7 @@ import { OdjelDjelatnikaComponent } from './odjel-djelatnika/odjel-djelatnika.co
 import { DjelatnikComponent } from './djelatnik/djelatnik.component';
 import { StudentComponent } from './student/student.component';
 import { RadComponent } from './rad/rad.component';
+import { PonudeneTemeComponent } from './ponudene-teme/ponudene-teme.component';
 
 
 
@@ -23,7 +24,8 @@ import { RadComponent } from './rad/rad.component';
     OdjelDjelatnikaComponent,
     DjelatnikComponent,
     StudentComponent,
-    RadComponent
+    RadComponent,
+    PonudeneTemeComponent
   ],
   imports: [
     ZajednickiModule,

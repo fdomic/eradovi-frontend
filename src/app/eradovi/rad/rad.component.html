@@ -1,3 +1,34 @@
-<p>
-  rad works!
-</p>
+<form [formGroup]="this.myForm" >
+      
+  <div>
+  
+    <div class="wrapper">
+      <div class="contact-form">
+        <div class="input-fields">
+
+          
+          <input class="input" placeholder="djelatnik_id" formControlName="djelatnik_id" /> 
+
+          
+          <input class="input" placeholder="naziv_hr" formControlName="naziv_hr" /> 
+          <input class="input" placeholder="opis_hr" formControlName="opis_hr" /> 
+         
+          <input class="input" placeholder="naziv_eng" formControlName="naziv_eng" /> 
+          <input class="input" placeholder="opis_eng" formControlName="opis_eng" /> 
+          
+          <input class="input" placeholder="naziv_tal" formControlName="naziv_tal" /> 
+          <input class="input" placeholder="opis_tal" formControlName="opis_tal" />  
+
+          <button class="btn" (click)="this.kreirajrad()">Kreiraj rad</button>  
+        </div>  
+      
+  
+      </div>
+    </div>
+  
+  </div>
+    
+      
+  </form>
+  
+  
