@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ApiService } from '../../api.service';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { ApiService } from '../../../api.service';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-odjel',
@@ -13,7 +14,7 @@ export class OdjelComponent {
 
   public fakulteti: Array<any> = [];
 
-  constructor(private fb: FormBuilder, private apiService: ApiService) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private message: NzMessageService) {
     this.init();
   }
 
@@ -43,11 +44,21 @@ export class OdjelComponent {
   public kreirajOdjel(): void {
     
     this.apiService.kreirajOdjel(this.myForm.value.fakultet_id , this.myForm.value.naziv ).subscribe(
-      response => console.log(response),
+      response => console.log(response, this.createMessage('success')),
 
-      error => console.log(error)
+      error => console.log(error, this.createMessage('error'))
     );
   }
 
+  public createMessage(type: string): void {
+
+    if(type === 'success' ) {
+      this.message.create(type, `Uspjesno je spremljen odjel`);
+    }
+    else {
+      this.message.create(type, `Spremanje nije uspjelo`);
+    }
+
+  }
 
 }

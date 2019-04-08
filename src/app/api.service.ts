@@ -193,7 +193,7 @@ export class ApiService {
     opis_eng: string,
     naziv_tal: string,
     opis_tal: string
-  ): Observable<any> {
+  ): Observable<kreirajPonudenuTemuInterface> {
     let payload = {
      
       rad_id: rad_id,

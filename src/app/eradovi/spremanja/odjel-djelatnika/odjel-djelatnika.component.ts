@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { ApiService } from 'src/app/api.service';
+import { ApiService } from '../../../api.service';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-odjel-djelatnika',
@@ -13,7 +14,7 @@ export class OdjelDjelatnikaComponent  {
   public odjeli: Array<any> = [];
   public djelatnici: Array<any> = [];
 
-  constructor(private fb: FormBuilder, private apiService: ApiService) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private message: NzMessageService) {
     this.init();
   }
 
@@ -53,10 +54,21 @@ export class OdjelDjelatnikaComponent  {
   public kreirajOdjelDjelatnika(): void {
     
     this.apiService.kreirajOdjelDjelatnika(this.myForm.value.odjel_id ,this.myForm.value.djelatnik_id, this.myForm.value.naziv ).subscribe(
-      response => console.log(response),
+      response => console.log(response, this.createMessage('success')),
 
-      error => console.log(error)
+      error => console.log(error, this.createMessage('error'))
     );
   }
+   
+public createMessage(type: string): void {
+
+  if(type === 'success' ) {
+    this.message.create(type, `Uspjesno je spremljen odjel djelatnika`);
+  }
+  else {
+    this.message.create(type, `Spremanje nije uspjelo`);
+  }
+
+}
 
 }

@@ -1,0 +1,12 @@
+<nz-table  #basicTable [nzData]="this.fakulteti">
+  <thead>
+    <tr>
+      <th>Naziv fakultet</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let fakultet of basicTable.data">
+      <tr >
+        <td>{{ fakultet.naziv }}</td>
+      </tr>
+  </tbody>
+</nz-table>

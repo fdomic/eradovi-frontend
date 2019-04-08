@@ -1,16 +1,22 @@
 import { NgModule } from "@angular/core";
 import { ZajednickiModule } from '../zajednicki/zajednicki.module';
 import { EradoviRouting } from './eradovi.routing';
-import { NavigationComponent } from './navigation/navigation.component';
-import { FakultetComponent } from './fakultet/fakultet.component';
-import { OdjelComponent } from './odjel/odjel.component';
-import { UcitajComponent } from './ucitaj/ucitaj.component';
-import { DohvatiFakultetComponent } from './dohvati-fakultet/dohvati-fakultet.component';
-import { OdjelDjelatnikaComponent } from './odjel-djelatnika/odjel-djelatnika.component';
-import { DjelatnikComponent } from './djelatnik/djelatnik.component';
-import { StudentComponent } from './student/student.component';
-import { RadComponent } from './rad/rad.component';
-import { PonudeneTemeComponent } from './ponudene-teme/ponudene-teme.component';
+
+
+// Spremanje
+import { NavigationComponent } from '././navigation/navigation.component';
+import { FakultetComponent } from './spremanja/fakultet/fakultet.component';
+import { OdjelComponent } from './spremanja/odjel/odjel.component';
+import { UcitajComponent } from './spremanja/ucitaj/ucitaj.component';
+import { OdjelDjelatnikaComponent } from './spremanja/odjel-djelatnika/odjel-djelatnika.component';
+import { DjelatnikComponent } from './spremanja/djelatnik/djelatnik.component';
+import { StudentComponent } from './spremanja/student/student.component';
+import { RadComponent } from './spremanja/rad/rad.component';
+import { PonudeneTemeComponent } from './spremanja/ponudene-teme/ponudene-teme.component';
+
+//Dohvati
+import { DohvatiFakultetComponent } from './dohvati/dohvati-fakultet/dohvati-fakultet.component';
+import { DohvatiOdjelComponent } from './dohvati/dohvati-odjel/dohvati-odjel.component';
 
 
 
@@ -25,7 +31,8 @@ import { PonudeneTemeComponent } from './ponudene-teme/ponudene-teme.component';
     DjelatnikComponent,
     StudentComponent,
     RadComponent,
-    PonudeneTemeComponent
+    PonudeneTemeComponent,
+    DohvatiOdjelComponent
   ],
   imports: [
     ZajednickiModule,

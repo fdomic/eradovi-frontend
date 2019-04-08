@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { ApiService } from 'src/app/api.service';
+import { ApiService } from '../../../api.service';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-ponudene-teme',
@@ -12,7 +13,7 @@ export class PonudeneTemeComponent{
   
   public myForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private message: NzMessageService) {
     this.init();
   }
 
@@ -54,10 +55,20 @@ export class PonudeneTemeComponent{
       this.myForm.value.naziv_tal,
       this.myForm.value.opis_tal
         ).subscribe(
-      response => console.log(response),
+      response => console.log(response, this.createMessage('success')),
 
-      error => console.log(error)
+      error => console.log(error, this.createMessage('error'))
     );
   }
+
+public createMessage(type: string): void {
+
+  if(type === 'success' ) {
+    this.message.create(type, `Uspjesno je spremljen ponudena tema`);
+  }
+  else {
+    this.message.create(type, `Spremanje nije uspjelo`);
+  }
+}
 
 }

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ApiService } from '../../api.service';
-
+import { ApiService } from '../../../api.service';
 
 @Component({
   selector: 'app-dohvati-fakultet',
@@ -9,17 +7,10 @@ import { ApiService } from '../../api.service';
   styleUrls: ['./dohvati-fakultet.component.css']
 })
 export class DohvatiFakultetComponent  {
-  
-  public myForm: FormGroup;
 
   public fakulteti: Array<any> = [];
 
-  constructor(private fb: FormBuilder, private apiService: ApiService) {
-    this.init();
-  }
-
-  private init(): void {
-   
+  constructor( private apiService: ApiService) {
     this.dohvatiFakultete();
   }
 
@@ -30,10 +21,5 @@ export class DohvatiFakultetComponent  {
       error => console.log(error)
     );
   }
-
-  
-
-  
-
 
 }

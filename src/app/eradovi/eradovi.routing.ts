@@ -1,16 +1,21 @@
 import { ModuleWithProviders } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { NavigationComponent } from "./navigation/navigation.component";
-import { FakultetComponent } from './fakultet/fakultet.component';
-import { OdjelComponent } from './odjel/odjel.component';
-import { UcitajComponent } from './ucitaj/ucitaj.component';
-import { DohvatiFakultetComponent } from './dohvati-fakultet/dohvati-fakultet.component';
-import { DjelatnikComponent } from './djelatnik/djelatnik.component';
-import { OdjelDjelatnikaComponent } from './odjel-djelatnika/odjel-djelatnika.component';
-import { StudentComponent } from './student/student.component';
 import { AutentifikacijaGuardService } from '../autentifikacija/autentifikacija.guard';
-import { RadComponent } from './rad/rad.component';
-import { PonudeneTemeComponent } from './ponudene-teme/ponudene-teme.component';
+import { NavigationComponent } from "./navigation/navigation.component";
+
+
+
+import { FakultetComponent } from './spremanja/fakultet/fakultet.component';
+import { OdjelComponent } from './spremanja/odjel/odjel.component';
+import { UcitajComponent } from './spremanja/ucitaj/ucitaj.component';
+import { OdjelDjelatnikaComponent } from './spremanja/odjel-djelatnika/odjel-djelatnika.component';
+import { DjelatnikComponent } from './spremanja/djelatnik/djelatnik.component';
+import { StudentComponent } from './spremanja/student/student.component';
+import { RadComponent } from './spremanja/rad/rad.component';
+import { PonudeneTemeComponent } from './spremanja/ponudene-teme/ponudene-teme.component';
+
+import { DohvatiFakultetComponent } from './dohvati/dohvati-fakultet/dohvati-fakultet.component';
+import { DohvatiOdjelComponent } from './dohvati/dohvati-odjel/dohvati-odjel.component';
 
 const EradoviRoutes: Routes = [
   {
@@ -22,7 +27,6 @@ const EradoviRoutes: Routes = [
 
     
       { component: FakultetComponent, path: "fakultet" },
-      { component: DohvatiFakultetComponent, path: "dohvati-fakultet" },
       { component: OdjelComponent, path: "odjeli" },
       { component: UcitajComponent, path: "ucitaj" },
       { component: DjelatnikComponent, path: "djelatnik" },
@@ -30,6 +34,11 @@ const EradoviRoutes: Routes = [
       { component: OdjelDjelatnikaComponent, path: "odjel-djelatnika" },
       { component: RadComponent, path: "rad" },
       { component: PonudeneTemeComponent, path: "ponudene-teme" },
+
+
+      { component: DohvatiFakultetComponent, path: "dohvati-fakultet" },
+      { component: DohvatiOdjelComponent, path: "dohvati-odjel" },
+
       { path: "**", redirectTo: "fakultet", pathMatch: "full" }
     ]
   }
