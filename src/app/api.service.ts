@@ -5,13 +5,16 @@ import { environment } from "src/environments/environment";
 import { LoginResponseInterface } from "./interface/loginResponse.interface";
 import { KreirajFakultetInterface } from "./interface/kreirajFakultet.interface";
 import { KreirajOdjelInterface } from './interface/kreirajOdjel.interface';
-import { Data } from '@angular/router';
+import { kreirajStudentaInterface } from './interface/kreirajStudenta.interface';
+import { KreirajDjelatnikaInterface } from './interface/kreirajDjelatnika.interface';
 
 @Injectable()
 export class ApiService {
   private url: string = environment.apiServer;
 
   constructor(private http: HttpClient) {}
+
+   //-------AUTETIFIKACIJA---------------------------------------------------------------------
 
   public login(
     email: string,
@@ -26,13 +29,13 @@ export class ApiService {
       this.http.post(this.url + "/login", payload, this.getHttpOptions())
     );
   }
-  //-------Kreiraj fakultet---------------------------------------------------------------------
+  //-------FAKULTET---------------------------------------------------------------------
 
-  public dohvatiFakultete(): Observable<any> { // TODO interface
+   public dohvatiFakultete(): Observable<any> { // TODO interface
     return <any>(
       this.http.get(this.url + "/fakultet", this.getHttpOptions())
     );
-  }
+    }
 
   public kreirajFakultet(naziv: string): Observable<KreirajFakultetInterface> {
     let payload = {
@@ -43,8 +46,14 @@ export class ApiService {
       this.http.post(this.url + "/fakultet", payload, this.getHttpOptions())
     );
   }
+   
+  //----------ODJEL----------------------------------------------------------------
 
-  //-----------------------------------------------------------------------------------------
+  public dohvatiOdjel(): Observable<any> { // TODO interface
+    return <any>(
+      this.http.get(this.url + "/odjel", this.getHttpOptions())
+    );
+    }
 
   public kreirajOdjel(fakultet_id: string ,naziv: string): Observable<KreirajOdjelInterface> {
     let payload = {
@@ -56,7 +65,85 @@ export class ApiService {
     );
   }
 
-  //-----------------------------------------------------------------------------------------
+   //-------DJELATNIK---------------------------------------------------------------------
+  
+   public dohvatijDjelatnika(): Observable<any> { // TODO interface
+    return <any>(
+      this.http.get(this.url + "/dijelatnik", this.getHttpOptions())
+    );
+    }
+
+   public kreirajDjelatnika(
+    name:string,
+    email:string,
+    password:string,
+    ime: string,
+    prezime: string,
+    oib: string,
+    jmbag: string
+    ): Observable<KreirajDjelatnikaInterface> {
+    let payload = {
+      users:{
+      name:name,
+      email:email,
+      password:password
+      },
+      ime: ime,
+      prezime: prezime,
+      oib: oib,
+      jmbag: jmbag
+    };
+    return <any>(
+      this.http.post(this.url + "/dijelatnik", payload, this.getHttpOptions())
+    );
+  }
+    //-------STUDENT---------------------------------------------------------------------
+
+    public dohvatiStudenta(): Observable<any> { // TODO interface
+      return <any>(
+        this.http.get(this.url + "/student", this.getHttpOptions())
+      );
+      }
+    public kreirajStudenta( 
+      name:string,
+      email:string,
+      password:string,
+      ime: string,
+      prezime: string,
+      oib: string,
+      jmbag: string
+      ): Observable<kreirajStudentaInterface> {
+      let payload = {
+        users:{
+        name:name,
+        email:email,
+        password:password
+        },
+        ime: ime,
+        prezime: prezime,
+        oib: oib,
+        jmbag: jmbag
+      };
+      return <any>(
+        this.http.post(this.url + "/student", payload, this.getHttpOptions())
+      );
+    }
+ 
+    //---------ODJEL DJELATNIKA----------------------------------------------------------------
+
+
+    public kreirajOdjelDjelatnika(fakultet_id: string ,djelatnik_id: string ,naziv: string): Observable<KreirajOdjelInterface> {
+      let payload = {
+        fakultet_id: fakultet_id,
+        djelatnik_id:djelatnik_id,
+        naziv: naziv
+      };
+      return <any>(
+        this.http.post(this.url + "/odijel-djelatnik", payload, this.getHttpOptions())
+      );
+    }
+  
+    //----------DATOTEKA-------------------------------------------------------------------
 
   
   public kreirajDatoteku(rad_id: number, payload: FormData): Observable<any> {    

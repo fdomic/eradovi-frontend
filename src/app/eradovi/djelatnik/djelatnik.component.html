@@ -1,0 +1,31 @@
+<form [formGroup]="this.myForm" >
+      
+  <div>
+  
+    <div class="wrapper">
+      <div class="contact-form">
+        <div class="input-fields">
+          <input class="input" placeholder="Ime profila" formControlName="name" /> 
+          <input class="input" placeholder="Email" formControlName="email" /> 
+          <input class="input" placeholder="Password" formControlName="password" /> 
+         
+          
+        </div>  
+          
+        <div class="input-fields">
+          <input class="input" placeholder="Ime" formControlName="ime" /> 
+          <input class="input" placeholder="Prezime" formControlName="prezime" />
+          <input class="input" placeholder="OIB" formControlName="oib" /> 
+          <input class="input" placeholder="JMBAG" formControlName="jmbag" />
+          <button class="btn" (click)="this.kreirajStudenta()">Kreiraj djelatnika</button>  
+        </div>
+  
+      </div>
+    </div>
+  
+  </div>
+    
+      
+  </form>
+  
+  

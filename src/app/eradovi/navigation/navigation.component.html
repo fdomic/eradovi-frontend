@@ -13,43 +13,74 @@
       [nzInlineCollapsed]="isCollapsed"
     >
 
+      <li nz-submenu>
+        <span title><i nz-icon type="bank"></i>
+        <span class="nav-text">Fakultet</span></span>
+        <ul>
+          <li nz-menu-item routerLink="/e-radovi/fakultet"> Dodaj fakultet</li>
+          <li nz-menu-item routerLink="/e-radovi/dohvati-fakultet"> Dohvati fakultet</li>
+        </ul>
+      </li>
+
 
       <li nz-submenu>
-        <span title
-          ><i nz-icon type="user"></i
-          ><span class="nav-text">Fakultet</span></span
-        >
+        <span title><i nz-icon type="solution"></i><span class="nav-text">Odjel</span></span>
         <ul>
-            <li nz-menu-item routerLink="/e-radovi/fakultet" >Fakultet</li>
-            <li nz-menu-item routerLink="/e-radovi/odjeli" >Odjeli</li>
-            <li nz-menu-item routerLink="/e-radovi/ucitaj" >Ucitaj</li>
+          <li nz-menu-item routerLink="/e-radovi/odjeli" >Odjeli</li>
         </ul>
       </li>
+
       <li nz-submenu>
-        <span title
-          ><i nz-icon type="team"></i><span class="nav-text">Odjel</span></span
-        >
+        <span title><i nz-icon type="file"></i>
+        <span class="nav-text">Datoteka</span></span>
         <ul>
-          <li nz-menu-item></li>
+          <li nz-menu-item routerLink="/e-radovi/ucitaj">Ucitaj</li>
         </ul>
       </li>
-      <li nz-menu-item>
-        <span
-          ><i nz-icon type="file"></i><span class="nav-text">File</span></span
-        >
+
+      
+      <li nz-submenu>
+        <span title><i nz-icon type="team"></i>
+        <span class="nav-text">Djelatnika</span></span>
+        <ul>
+          <li nz-menu-item routerLink="/e-radovi/djelatnik">Dodaj djelatnika</li>
+        </ul>
       </li>
+
+      <li nz-submenu>
+        <span title><i nz-icon type="team"></i>
+        <span class="nav-text">Student</span></span>
+        <ul>
+          <li nz-menu-item routerLink="/e-radovi/student">Dodaj studenta</li>
+        </ul>
+      </li>
+
+      <li nz-submenu>
+        <span title><i nz-icon type="team"></i>
+        <span class="nav-text">Odjel djelatnika</span></span>
+        <ul>
+          <li nz-menu-item routerLink="/e-radovi/odjel-djelatnika">Dodaj odjel djelatnika</li>
+        </ul>
+      </li>
+
+
+
     </ul>
   </nz-sider>
+
+
   <nz-layout>
-    <nz-header style="background: #fff; padding:0;"></nz-header>
+    <nz-header  style="background:  #011930; padding:0; "></nz-header>
+
     <nz-content style="margin:0 16px;">
       <nz-breadcrumb style="margin:16px 0;"> </nz-breadcrumb>
       <div style="padding:24px; background: #fff; min-height: 600px;">
-        <router-outlet></router-outlet>
+         <router-outlet></router-outlet>
       </div>
     </nz-content>
+
     <nz-footer style="text-align: center;"
-      >Ant Design ©2019 Implement By Filip</nz-footer
-    >
+      >Ant Design ©2019 Implement By Filip</nz-footer>
   </nz-layout>
+
 </nz-layout>
