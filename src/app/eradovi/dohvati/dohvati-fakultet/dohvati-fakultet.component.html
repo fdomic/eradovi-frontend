@@ -1,12 +1,41 @@
-<nz-table  #basicTable [nzData]="this.fakulteti">
+
+ 
+      <button (click)="onCreate()">ovdje se doda</button>
+
+
+<nz-table #basicTable [nzData]="this.fakulteti">
+ 
   <thead>
     <tr>
       <th>Naziv fakultet</th>
+      <th></th>
     </tr>
   </thead>
   <tbody *ngFor="let fakultet of basicTable.data">
-      <tr >
-        <td>{{ fakultet.naziv }}</td>
-      </tr>
+    <tr>
+      <td>{{ fakultet.naziv }}</td>
+
+      <td nzLeft="100px">
+        <button
+          nz-button
+          nzType="default"
+          nzBlock
+          [nzSize]="'small'"
+          class="btn-edit" >
+          <a nz-popconfirm nzTitle="Sure to delete?" style="color: white; " >Edit</a>
+        </button>
+
+        <button
+          nz-button
+          nzType="danger"
+          nzBlock
+          nzBlock
+          [nzSize]="'small'"
+          class="btn-delete" >
+          <a nz-popconfirm nzTitle="Sure to delete?" style="color: white; ">Delete</a>
+        </button>
+
+      </td>
+    </tr>
   </tbody>
 </nz-table>

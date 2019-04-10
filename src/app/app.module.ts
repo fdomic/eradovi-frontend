@@ -10,9 +10,6 @@ import { AutentifikacijaModule } from './autentifikacija/autentifikacija.module'
 import { EradoviModule } from './eradovi/eradovi.module';
 
 
-
-
-
 @NgModule({
   declarations: [AppComponent],
   imports: [

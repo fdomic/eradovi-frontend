@@ -1,35 +1,46 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
+
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  outline: none;
-  font-family: 'Roboto', sans-serif;
+.wrapper{
+      display: flex;
+    	justify-content: center;
+    	align-items: center;
+      height: calc(100vh - 300px);
+      width: 100%;
 }
 
-.wrapper{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  padding: 0 20px;
+.table {
+   
+  height: calc(100vh - 200px);
+ 
+}
+
+.btn-edit{
+
+  max-width:60px;
+  background: #002141;
+  
+
+}
+.btn-delete{
+  max-width:60px;
+  background: #002141;
+  
+}
+.btn-edit:hover{
+
+  
+  background: green;
+
 }
 
 .contact-form{
   display: flex;
   flex-direction: row;
-  max-width: 700px;
-  margin: auto;
- 
-  padding: 24px;
-  border-radius: 5px;
+  max-width: 200px;
+  padding: 50px;
+  border-radius: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
@@ -85,12 +96,8 @@ body {
 @media screen and (max-width: 1150px){
   .contact-form{
     max-width: 300px; 
-    margin-top: 24px;
-    margin-right: auto;
-    margin-left: auto;
-    flex-direction: column;
-    display: flex;
-    
+    margin: auto;
+    padding: 50px;
   }
   .msg textarea{
     height: 20px;

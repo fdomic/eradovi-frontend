@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { environment } from "src/environments/environment";
+import { environment } from "../environments/environment";
 import { LoginResponseInterface } from "./interface/loginResponse.interface";
 import { KreirajFakultetInterface } from "./interface/kreirajFakultet.interface";
 import { KreirajOdjelInterface } from "./interface/kreirajOdjel.interface";
@@ -9,6 +9,7 @@ import { kreirajStudentaInterface } from "./interface/kreirajStudenta.interface"
 import { KreirajDjelatnikaInterface } from "./interface/kreirajDjelatnika.interface";
 import { kreirajRadInterface } from './interface/kreirajRad.interface';
 import { kreirajPonudenuTemuInterface } from './interface/kreirajPonudenuTemu.interface';
+import { kreirajOdjelDjelatnikaInterface } from './interface/kreirajOdjelDjelatnika.interface';
 
 @Injectable()
 export class ApiService {
@@ -104,6 +105,7 @@ export class ApiService {
     // TODO interface
     return <any>this.http.get(this.url + "/student", this.getHttpOptions());
   }
+
   public kreirajStudenta(
     name: string,
     email: string,
@@ -132,12 +134,12 @@ export class ApiService {
   //---------ODJEL DJELATNIKA----------------------------------------------------------------
 
   public kreirajOdjelDjelatnika(
-    fakultet_id: string,
+    odjel_id: string,
     djelatnik_id: string,
     naziv: string
-  ): Observable<KreirajOdjelInterface> {
+  ): Observable<kreirajOdjelDjelatnikaInterface> {
     let payload = {
-      fakultet_id: fakultet_id,
+      odjel_id: odjel_id,
       djelatnik_id: djelatnik_id,
       naziv: naziv
     };
@@ -150,6 +152,12 @@ export class ApiService {
     );
   }
   //----------RAD-------------------------------------------------------------------
+
+  
+  public dohvatirad(): Observable<any> {
+    // TODO interface
+    return <any>this.http.get(this.url + "/rad", this.getHttpOptions());
+  }
 
   public kreirajrad(
     statusi_rada_id: string,

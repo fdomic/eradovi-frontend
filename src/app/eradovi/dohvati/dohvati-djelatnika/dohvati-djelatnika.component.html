@@ -1,15 +1,19 @@
-<nz-table #basicTable [nzData]="this.odjeli">
-  <thead>
+<nz-table class="table"   #basicTable [nzData]="this.djelatnici">
+  <thead  >
     <tr>
-      <th>Naziv fakultet</th>
-      <th>Naziv Odjela</th>
+      <th>Ime</th>
+      <th>Prezime</th>
+      <th>Oib</th>
+      <th>Jmbag</th>
       <th></th>
     </tr>
   </thead>
-  <tbody *ngFor="let odjel of basicTable.data">
+  <tbody  *ngFor="let djelatnik of basicTable.data">
       <tr >
-        <td >{{ this.getNazivFakulteta(odjel.fakultet_id) }}</td>
-        <td >{{ odjel.naziv }}</td>
+        <td>{{ djelatnik.ime }}</td>
+        <td>{{ djelatnik.prezime }}</td>
+        <td>{{ djelatnik.oib }}</td>
+        <td>{{ djelatnik.jmbag }}</td>
         <td nzLeft="100px">
           <button
             nz-button

@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Component } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { ApiService } from '../../../api.service';
 import { NzMessageService } from 'ng-zorro-antd';
 
@@ -11,13 +11,22 @@ import { NzMessageService } from 'ng-zorro-antd';
 export class FakultetComponent {
 
   public myForm: FormGroup;
-
+  
+  public fakulteti: Array<any> = [];
   
   constructor(private fb: FormBuilder, private apiService: ApiService, private message: NzMessageService) {
     this.init();
+    this.dohvatiFakultete();
   }
 
+  private dohvatiFakultete(): void {
+    this.apiService.dohvatiFakultete().subscribe(
+      response => this.fakulteti = response.data,
 
+      error => console.log(error)
+    );
+  }
+    
   private init(): void {
     this.kreirajFormu();
   }
@@ -29,7 +38,7 @@ export class FakultetComponent {
   }
 
   // ========= HTML METODE =========
-   c:number;
+  
 
   public kreirajFakultet(): void {
     this.apiService.kreirajFakultet(this.myForm.value.naziv).subscribe(

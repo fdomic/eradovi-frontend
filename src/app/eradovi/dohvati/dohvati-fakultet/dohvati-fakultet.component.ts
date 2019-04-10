@@ -21,5 +21,7 @@ export class DohvatiFakultetComponent  {
       error => console.log(error)
     );
   }
+    
+  
 
 }

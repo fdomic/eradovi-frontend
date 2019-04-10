@@ -5,21 +5,21 @@
     <div class="wrapper">
       <div class="contact-form"  style=" max-width: 400px;">
         <div class="input-fields" style=" width: 100%">
-          Djelatnici
-          <select class="select"  formControlName="djelatnik_id">
-            <ng-container *ngFor="let djelatnik of this.djelatnici">
-               <option  class="input"  [value]="djelatnik.id">{{ djelatnik.ime  }}  {{  djelatnik.prezime }}</option>
-            </ng-container>
-          </select>
+         
           Odjeli
           <select class="select" formControlName="odjel_id">
             <ng-container *ngFor="let odjel of this.odjeli">
               <option  class="input"  [value]="odjel.id">{{ odjel.naziv }}</option>
             </ng-container>
           </select>
+          Djelatnici
+          <select class="select"  formControlName="djelatnik_id">
+            <ng-container *ngFor="let djelatnik of this.djelatnici">
+               <option  class="input"  [value]="djelatnik.id">{{ djelatnik.ime  }}  {{  djelatnik.prezime }}</option>
+            </ng-container>
+          </select>
 
-
-          <input class="input" placeholder="naziv"  formControlName="" /> 
+          <input class="input" placeholder="naziv"  formControlName="naziv" /> 
           <button class="btn" (click)="this.kreirajOdjelDjelatnika()">Kreiraj odjel</button>
         </div>  
       </div>

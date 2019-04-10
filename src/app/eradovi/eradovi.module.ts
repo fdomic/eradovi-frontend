@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { ZajednickiModule } from '../zajednicki/zajednicki.module';
+import {MatDialogModule} from '@angular/material/dialog';
 import { EradoviRouting } from './eradovi.routing';
 
 
@@ -17,6 +18,11 @@ import { PonudeneTemeComponent } from './spremanja/ponudene-teme/ponudene-teme.c
 //Dohvati
 import { DohvatiFakultetComponent } from './dohvati/dohvati-fakultet/dohvati-fakultet.component';
 import { DohvatiOdjelComponent } from './dohvati/dohvati-odjel/dohvati-odjel.component';
+import { DohvatiDjelatnikaComponent } from './dohvati/dohvati-djelatnika/dohvati-djelatnika.component';
+import { DohvatiStudentaComponent } from './dohvati/dohvati-studenta/dohvati-studenta.component';
+import { DohvatiRadComponent } from './dohvati/dohvati-rad/dohvati-rad.component';
+import { DohvatiPonudenuTemuComponent } from './dohvati/dohvati-ponudenu-temu/dohvati-ponudenu-temu.component';
+import { DohvatiOdjelDjelatnikaComponent } from './dohvati/dohvati-odjel-djelatnika/dohvati-odjel-djelatnika.component';
 
 
 
@@ -32,13 +38,20 @@ import { DohvatiOdjelComponent } from './dohvati/dohvati-odjel/dohvati-odjel.com
     StudentComponent,
     RadComponent,
     PonudeneTemeComponent,
-    DohvatiOdjelComponent
+    DohvatiOdjelComponent,
+    DohvatiDjelatnikaComponent,
+    DohvatiStudentaComponent,
+    DohvatiRadComponent,
+    DohvatiPonudenuTemuComponent,
+    DohvatiOdjelDjelatnikaComponent
   ],
   imports: [
     ZajednickiModule,
-    EradoviRouting
+    EradoviRouting,
+    MatDialogModule
   ],
-  providers: []
+  providers: [],
+  entryComponents:[FakultetComponent]
 })
 
 export class EradoviModule {}
