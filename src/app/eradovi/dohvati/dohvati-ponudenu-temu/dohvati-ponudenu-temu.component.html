@@ -1,3 +1,55 @@
-<p>
-  dohvati-ponudenu-temu works!
-</p>
+<nz-table #basicTable [nzData]="this.ponudeneTeme">
+    <thead> 
+      <tr>
+          <th>Profesor</th>
+          
+          <th>Naziv HR</th>
+          <th>Opis HR</th>
+          <th>Naziv ENG</th>
+          <th>Opis ENG</th>
+          <th>Naziv TAL</th>
+          <th>Opis TAL</th>
+        
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let tema of basicTable.data">
+      <tr>
+        <td>{{this.getNazivDjelatnika(tema.djelatnik_id) }}</td>
+        <td>{{ tema.naziv_hr }}</td>
+        <td>{{ tema.opis_hr }} </td>
+        <td>{{ tema.naziv_eng }}</td>
+        <td>{{ tema.opis_eng }}</td>
+        <td> {{ tema.naziv_tal }}</td>
+        <td >{{ tema.opis_tal}} </td>
+  
+        <td nzLeft="100px">
+          <button
+            nz-button
+            nzType="default"
+            nzBlock
+            [nzSize]="'small'"
+            class="btn-edit"
+          >
+            <a nz-popconfirm nzTitle="Sure to delete?" style="color: white; "
+              >Edit</a
+            >
+          </button>
+  
+          <button
+            nz-button
+            nzType="danger"
+            nzBlock
+            nzBlock
+            [nzSize]="'small'"
+            class="btn-delete"
+          >
+            <a nz-popconfirm nzTitle="Sure to delete?" style="color: white; "
+              >Delete</a
+            >
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  

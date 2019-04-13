@@ -33,8 +33,12 @@ const EradoviRoutes: Routes = [
     children: [
       { path: "", redirectTo: "fakultet", pathMatch: "full" },   
 
-      // Spremanje
       { component: FakultetComponent, path: "fakultet" },
+      { component: FakultetComponent, path: "fakultet/:id" },
+      { component: DohvatiFakultetComponent, path: "dohvati-fakultet" },
+
+      // Spremanje
+      
       { component: OdjelComponent, path: "odjeli" },
       { component: UcitajComponent, path: "ucitaj" },
       { component: DjelatnikComponent, path: "djelatnik" },
@@ -44,7 +48,7 @@ const EradoviRoutes: Routes = [
       { component: PonudeneTemeComponent, path: "ponudene-teme" },
 
       //Dohvati
-      { component: DohvatiFakultetComponent, path: "dohvati-fakultet" },
+      
       { component: DohvatiOdjelComponent, path: "dohvati-odjel" },
       { component: DohvatiDjelatnikaComponent, path: "dohvati-djelatnika" },
       { component: DohvatiStudentaComponent, path: "dohvati-studenta" },

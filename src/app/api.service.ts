@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../environments/environment";
 import { LoginResponseInterface } from "./interface/loginResponse.interface";
-import { KreirajFakultetInterface } from "./interface/kreirajFakultet.interface";
+import { KreirajFakultetInterface, FakultetInterface } from "./interface/kreirajFakultet.interface";
 import { KreirajOdjelInterface } from "./interface/kreirajOdjel.interface";
 import { kreirajStudentaInterface } from "./interface/kreirajStudenta.interface";
 import { KreirajDjelatnikaInterface } from "./interface/kreirajDjelatnika.interface";
@@ -36,17 +36,19 @@ export class ApiService {
 
   public dohvatiFakultete(): Observable<any> {
     // TODO interface
-    return <any>this.http.get(this.url + "/fakultet", this.getHttpOptions());
+    return <any>this.http.get(this.url + "/fakultet"  , this.getHttpOptions());
   }
 
-  public kreirajFakultet(naziv: string): Observable<KreirajFakultetInterface> {
+  public kreirajFakultet(naziv: string, id?: number): Observable<KreirajFakultetInterface> {
     let payload = {
       naziv: naziv
     };
+    if(id) payload["id"] = id;
     return <any>(
       this.http.post(this.url + "/fakultet", payload, this.getHttpOptions())
     );
   }
+
 
   //----------ODJEL----------------------------------------------------------------
 
@@ -192,6 +194,11 @@ export class ApiService {
   }
   //----------Ponudena tema-------------------------------------------------------------------
 
+  public dohvatiPonudenuTemu(): Observable<any> {
+    // TODO interface
+    return <any>this.http.get(this.url + "/ponudena-tema", this.getHttpOptions());
+  }
+
   public kreirajPonudenuTemu(
     rad_id: Number,
     djelatnik_id: Number,
@@ -223,21 +230,24 @@ export class ApiService {
   //----------DATOTEKA-------------------------------------------------------------------
 
   public kreirajDatoteku(rad_id: number, payload: FormData): Observable<any> {
+
     return <any>(
       this.http.post(
         this.url + "/ucitaj/" + rad_id,
         payload,
-        this.getHttpOptions()
+        this.getHttpOptions('form')
       )
     );
   }
 
   //-----------------------------------------------------------------------------------------
 
-  private getHttpOptions(): any {
-    let headers = {
-      "Content-Type": "application/json"
-    };
+  private getHttpOptions(contentType?: 'json' | 'form'): any {
+    if(!contentType) contentType = 'json';
+    let headers = {};
+    if(contentType === "json") {
+      headers["Content-Type"] = "application/json";
+    }
 
     const token = localStorage.getItem("AUTH_TOKEN");
     if (token) {

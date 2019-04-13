@@ -1,21 +1,32 @@
-
-
-<form [formGroup]="this.myForm" >  
+<form [formGroup]="this.myForm">
   <div>
     <div class="wrapper">
-      <div class="contact-form"  style=" max-width: 400px;">
+      <div class="contact-form" style=" max-width: 400px;">
         <div class="input-fields" style=" width: 100%">
-          <select formControlName="fakultet_id">
-            <ng-container *ngFor="let fakultet of this.fakulteti">
-              <option placeholder="Odaber fakultet"  class="input"  [value]="fakultet.id">{{ fakultet.naziv }}</option>
-            </ng-container>
-          </select>
-          <input class="input" placeholder="Ime odjela"  formControlName="naziv" /> 
-          <button class="btn" (click)="this.kreirajOdjel()">Kreiraj odjel</button>
-        </div>  
+          <nz-select
+            formControlName="fakultet_id"
+            style="width: 200px;"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Odaberi fakultet"
+          >
+            <nz-option
+              *ngFor="let fakultet of this.fakulteti "
+              nzLabel="{{ fakultet.naziv }}"
+              nzValue="fakultet.id "
+            ></nz-option>
+          </nz-select>
+
+          <input
+            class="input"
+            placeholder="Ime odjela"
+            formControlName="naziv"
+          />
+          <button class="btn" (click)="this.kreirajOdjel()">
+            Kreiraj odjel
+          </button>
+        </div>
       </div>
     </div>
-  </div>      
+  </div>
 </form>
-  
-  

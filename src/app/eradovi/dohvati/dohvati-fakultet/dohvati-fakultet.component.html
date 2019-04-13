@@ -1,7 +1,4 @@
 
- 
-      <button (click)="onCreate()">ovdje se doda</button>
-
 
 <nz-table #basicTable [nzData]="this.fakulteti">
  
@@ -11,18 +8,20 @@
       <th></th>
     </tr>
   </thead>
-  <tbody *ngFor="let fakultet of basicTable.data">
-    <tr>
-      <td>{{ fakultet.naziv }}</td>
+  <tbody >
+     <tr *ngFor="let fakultet of basicTable.data">
+        <td> {{ fakultet.naziv }} </td>
 
       <td nzLeft="100px">
         <button
+          routerLink="/e-radovi/fakultet/{{fakultet.id}}"
           nz-button
           nzType="default"
           nzBlock
           [nzSize]="'small'"
+          style="color: white; "
           class="btn-edit" >
-          <a nz-popconfirm nzTitle="Sure to delete?" style="color: white; " >Edit</a>
+          Uređivanje
         </button>
 
         <button
@@ -39,3 +38,5 @@
     </tr>
   </tbody>
 </nz-table>
+
+

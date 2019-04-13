@@ -1,3 +1,55 @@
-<p>
-  dohvati-rad works!
-</p>
+<nz-table #basicTable [nzData]="this.radovi">
+  <thead>
+    <tr>
+        <th>Profesor</th>
+        <th>Student</th>
+        <th>Naziv HR</th>
+        <th>Opis HR</th>
+        <th>Naziv ENG</th>
+        <th>Opis ENG</th>
+        <th>Naziv TAL</th>
+        <th>Opis TAL</th>
+      
+      <th></th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let rad of basicTable.data">
+    <tr>
+      <td>{{ this.getNazivDjelatnika(rad.djelatnik_id)  }}</td>
+      <td>{{ this.getNazivStudenta(rad.student_id)  }} </td>
+      <td>{{ rad.naziv_hr }}</td>
+      <td>{{ rad.opis_hr }} </td>
+      <td>{{ rad.naziv_eng }}</td>
+      <td>{{ rad.opis_eng }}</td>
+      <td>{{ rad.naziv_tal }}</td>
+      <td>{{ rad.opis_tal}} </td>
+
+      <td nzLeft="100px">
+        <button
+          nz-button
+          nzType="default"
+          nzBlock
+          [nzSize]="'small'"
+          class="btn-edit"
+        >
+          <a nz-popconfirm nzTitle="Sure to delete?" style="color: white; "
+            >Edit</a
+          >
+        </button>
+
+        <button
+          nz-button
+          nzType="danger"
+          nzBlock
+          nzBlock
+          [nzSize]="'small'"
+          class="btn-delete"
+        >
+          <a nz-popconfirm nzTitle="Sure to delete?" style="color: white; "
+            >Delete</a
+          >
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
