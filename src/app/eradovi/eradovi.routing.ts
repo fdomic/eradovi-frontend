@@ -33,29 +33,42 @@ const EradoviRoutes: Routes = [
     children: [
       { path: "", redirectTo: "fakultet", pathMatch: "full" },   
 
+      //Fakultet
       { component: FakultetComponent, path: "fakultet" },
       { component: FakultetComponent, path: "fakultet/:id" },
       { component: DohvatiFakultetComponent, path: "dohvati-fakultet" },
 
+      //Odjel
+      { component: OdjelComponent, path: "odjel" },
+      { component: OdjelComponent, path: "odjel/:id" },
+      { component: DohvatiOdjelComponent, path: "dohvati-odjel" },
+
+      //Rad
+      { component: RadComponent, path: "rad" },
+      { component: RadComponent, path: "rad/:id" },
+      { component: DohvatiRadComponent, path: "dohvati-rad" },
+   
+      //Ponudena tema
+      { component: PonudeneTemeComponent, path: "ponudene-teme" },
+      { component: PonudeneTemeComponent, path: "ponudene-teme/:id" }, 
+      { component: DohvatiPonudenuTemuComponent, path: "dohvati-ponudenu-temu" },
+
       // Spremanje
       
-      { component: OdjelComponent, path: "odjeli" },
+      
       { component: UcitajComponent, path: "ucitaj" },
       { component: DjelatnikComponent, path: "djelatnik" },
       { component: StudentComponent, path: "student" },
       { component: OdjelDjelatnikaComponent, path: "odjel-djelatnika" },
-      { component: RadComponent, path: "rad" },
-      { component: PonudeneTemeComponent, path: "ponudene-teme" },
+  
 
       //Dohvati
       
-      { component: DohvatiOdjelComponent, path: "dohvati-odjel" },
+     
       { component: DohvatiDjelatnikaComponent, path: "dohvati-djelatnika" },
       { component: DohvatiStudentaComponent, path: "dohvati-studenta" },
       { component: DohvatiOdjelDjelatnikaComponent, path: "dohvati-odjel-djelatnika" },
-      { component: DohvatiRadComponent, path: "dohvati-rad" },
-      { component: DohvatiPonudenuTemuComponent, path: "dohvati-ponudenu-temu" },
-     
+      
       { path: "**", redirectTo: "fakultet", pathMatch: "full" }
     ]
   }

@@ -1,21 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ApiService } from '../../../api.service';
 import { NzMessageService } from 'ng-zorro-antd';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-odjel',
   templateUrl: './odjel.component.html',
   styleUrls: ['./odjel.component.scss']
 })
-export class OdjelComponent {
+export class OdjelComponent implements OnInit {
   
   public myForm: FormGroup;
 
   public fakulteti: Array<any> = [];
-
-  constructor(private fb: FormBuilder, private apiService: ApiService, private message: NzMessageService) {
+  
+  private id;
+  
+  constructor(private fb: FormBuilder, private apiService: ApiService, private message: NzMessageService ,private route: ActivatedRoute) {
     this.init();
+  }
+
+  ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get("id");
+
+    if (this.id ) {
+     
+      this.apiService.dohvatiOdjel(this.id).subscribe(response => {
+        let odjel = response.data;
+        //TODO što ako je predan ID koji nije u listi    
+        this.myForm.patchValue({
+          naziv: odjel.naziv 
+        });
+      });
+    }
   }
 
   private init(): void {

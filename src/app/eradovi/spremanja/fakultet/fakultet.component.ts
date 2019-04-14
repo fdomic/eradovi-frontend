@@ -4,6 +4,7 @@ import { ApiService } from "../../../api.service";
 import { NzMessageService } from "ng-zorro-antd";
 import { ActivatedRoute } from "@angular/router";
 
+
 @Component({
   selector: "app-fakultet",
   templateUrl: "./fakultet.component.html",
@@ -11,16 +12,19 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class FakultetComponent implements OnInit {
   private id;
-
+  
   public myForm: FormGroup;
 
   public fakulteti: Array<any> = [];
+  
 
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
+   
     private message: NzMessageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    
   ) {
     this.init();
    
@@ -30,9 +34,9 @@ export class FakultetComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get("id");
 
     if (this.id ) {
-      // TODO NAPRAVITI BACKEND DA SE MOŽE DOHVATITI SAMO JEDAN FAKULTET A NE SVI
-      this.apiService.dohvatiFakultete().subscribe(response => {
-        let fakultet = response.data.find(x=> x.id == this.id); //TODO ovo maknutiu kada napraviš gornji TODO jer više neće biti lista nego samo jedan objekt
+     
+      this.apiService.dohvatiFakultete(this.id).subscribe(response => {
+        let fakultet = response.data;
         //TODO što ako je predan ID koji nije u listi
         this.myForm.patchValue({
           naziv: fakultet.naziv
@@ -68,8 +72,10 @@ export class FakultetComponent implements OnInit {
   public createMessage(type: string): void {
     if (type === "success") {
       this.message.create(type, `Uspjesno je spremljen fakultet`);
+      
     } else {
       this.message.create(type, `Spremanje nije uspjelo`);
     }
   }
+
 }

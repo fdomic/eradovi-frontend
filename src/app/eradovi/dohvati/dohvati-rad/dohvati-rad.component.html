@@ -26,16 +26,15 @@
 
       <td nzLeft="100px">
         <button
-          nz-button
-          nzType="default"
-          nzBlock
-          [nzSize]="'small'"
-          class="btn-edit"
-        >
-          <a nz-popconfirm nzTitle="Sure to delete?" style="color: white; "
-            >Edit</a
-          >
-        </button>
+        routerLink="/e-radovi/rad/{{ rad.id}}"
+        style="color: white; "
+        nz-button
+        nzType="default"
+        nzBlock
+        [nzSize]="'small'"
+        class="btn-edit" >
+        Uređivanje
+      </button>
 
         <button
           nz-button

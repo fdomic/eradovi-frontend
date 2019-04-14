@@ -25,15 +25,14 @@
   
         <td nzLeft="100px">
           <button
+            routerLink="/e-radovi/ponudene-teme/{{ tema.id}}"
+            style="color: white; "
             nz-button
             nzType="default"
             nzBlock
             [nzSize]="'small'"
-            class="btn-edit"
-          >
-            <a nz-popconfirm nzTitle="Sure to delete?" style="color: white; "
-              >Edit</a
-            >
+            class="btn-edit" >
+            Uređivanje
           </button>
   
           <button

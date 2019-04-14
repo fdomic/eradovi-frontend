@@ -1,15 +1,27 @@
-<form  [formGroup]="this.myForm">
-  
-    <input  formControlName="rad_id"  /> <br />
+<form [formGroup]="this.myForm">
+  <div>
+    <div class="wrapper">
+      <div class="contact-form" style=" max-width: 400px;">
+        <div class="input-fields" style=" width: 100%">
+          <input class="input" formControlName="rad_id" /> <br />
 
-    <input  type="file" formControlName="datoteka" (change)="ucitajDatoteku($event)" /><br />
+          
+          <div >
+            <nz-upload  nzListType="" >
+              <button nz-button><i nz-icon type="upload"></i><span>Upload</span></button>
+            </nz-upload>
+          </div>
 
-    <input  formControlName="status_verzije_id"  /> <br />
+          <br>
 
-    <button (click)="this.kreirajDatoteku()">spremi</button>
-  
+          <input class="input" formControlName="status_verzije_id" /> <br />
 
+          <button  nz-button nzType="primary" (click)="this.kreirajDatoteku()">Predaj datoteku</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
-
 
 

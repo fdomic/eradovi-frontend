@@ -34,8 +34,11 @@ export class ApiService {
   }
   //-------FAKULTET---------------------------------------------------------------------
 
-  public dohvatiFakultete(): Observable<any> {
+  public dohvatiFakultete(id?: number): Observable<any> {
     // TODO interface
+
+    if(id)return <any>this.http.get(this.url + "/fakultet/" + id  , this.getHttpOptions());
+
     return <any>this.http.get(this.url + "/fakultet"  , this.getHttpOptions());
   }
 
@@ -52,8 +55,9 @@ export class ApiService {
 
   //----------ODJEL----------------------------------------------------------------
 
-  public dohvatiOdjel(): Observable<any> {
+  public dohvatiOdjel(id?: number): Observable<any> {
     // TODO interface
+    if(id) return <any>this.http.get(this.url + "/odjel/" + id, this.getHttpOptions());
     return <any>this.http.get(this.url + "/odjel", this.getHttpOptions());
   }
 
@@ -156,8 +160,9 @@ export class ApiService {
   //----------RAD-------------------------------------------------------------------
 
   
-  public dohvatirad(): Observable<any> {
+  public dohvatirad(id?:number): Observable<any> {
     // TODO interface
+    if(id) return <any>this.http.get(this.url + "/rad/"+ id, this.getHttpOptions());
     return <any>this.http.get(this.url + "/rad", this.getHttpOptions());
   }
 
@@ -194,8 +199,9 @@ export class ApiService {
   }
   //----------Ponudena tema-------------------------------------------------------------------
 
-  public dohvatiPonudenuTemu(): Observable<any> {
+  public dohvatiPonudenuTemu(id?:number): Observable<any> {
     // TODO interface
+    if(id) return <any>this.http.get(this.url + "/ponudena-tema/"+ id, this.getHttpOptions());
     return <any>this.http.get(this.url + "/ponudena-tema", this.getHttpOptions());
   }
 

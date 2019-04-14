@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ApiService } from '../../../api.service';
 import { NzMessageService } from 'ng-zorro-antd';
-
+import { ActivatedRoute } from "@angular/router";
 @Component({
   selector: 'app-ponudene-teme',
   templateUrl: './ponudene-teme.component.html',
@@ -12,9 +12,32 @@ export class PonudeneTemeComponent{
 
   
   public myForm: FormGroup;
-
-  constructor(private fb: FormBuilder, private apiService: ApiService, private message: NzMessageService) {
+  private id;
+  constructor(private fb: FormBuilder, private apiService: ApiService, private message: NzMessageService,private route: ActivatedRoute) {
     this.init();
+  }
+
+  ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get("id");
+
+    if (this.id ) {
+     
+      this.apiService.dohvatirad(this.id).subscribe(response => {
+        let rad = response.data;
+        //TODO što ako je predan ID koji nije u listi    
+        this.myForm.patchValue({
+          rad_id: rad.rad_id,
+          djelatnik_id: rad.djelatnik_id,
+          naziv_hr: rad.naziv_hr,
+          opis_hr: rad.opis_hr,
+          naziv_eng: rad.naziv_eng,
+          opis_eng: rad.opis_eng,
+          naziv_tal: rad.naziv_tal,
+          opis_tal: rad.opis_tal
+      
+        });
+      });
+    }
   }
 
   private init(): void {
