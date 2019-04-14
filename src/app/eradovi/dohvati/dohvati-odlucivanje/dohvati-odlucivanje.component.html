@@ -1,0 +1,47 @@
+
+
+<nz-table #basicTable [nzData]="this.stanjeRada">
+  <thead>
+    <tr>
+      <th>Naziv rada</th>
+      <th>Opis rada</th>
+      <th>Status rada</th>
+      <th>Datum</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody >
+     <tr *ngFor="let stanjeRada of basicTable.data">
+        <td> {{ this.getNazivRada(stanjeRada.rad_id)}} </td>
+        <td> {{ this.getOpisRada(stanjeRada.rad_id)}} </td>
+        <td> {{ this.getstatusRada(stanjeRada.statusi_rada_id) }} </td>
+        <td> {{ stanjeRada.datum }} </td>
+
+      <button
+        routerLink="/e-radovi/odlucivanje/{{ stanjeRada.rad_id }}/2"
+        style="color: white;  "
+        nz-button
+        nzType="default"
+        nzBlock
+        [nzSize]="'small'"
+        class="btn-edit" >
+        Prihvacen
+      </button>
+      <br>
+      <button
+        routerLink="/e-radovi/odlucivanje/{{ stanjeRada.rad_id }}/3"
+        style="color: white; "
+        nz-button
+        nzType="default"
+        nzBlock
+        [nzSize]="'small'"
+        class="btn-delete" >
+        Odbijen
+      </button>
+
+
+    </tr>
+  </tbody>
+</nz-table>
+
+

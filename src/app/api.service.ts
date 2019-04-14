@@ -10,6 +10,7 @@ import { KreirajDjelatnikaInterface } from "./interface/kreirajDjelatnika.interf
 import { kreirajRadInterface } from './interface/kreirajRad.interface';
 import { kreirajPonudenuTemuInterface } from './interface/kreirajPonudenuTemu.interface';
 import { kreirajOdjelDjelatnikaInterface } from './interface/kreirajOdjelDjelatnika.interface';
+import { kreirajKomentarInterface } from './interface/kreirajKomentar.interface';
 
 @Injectable()
 export class ApiService {
@@ -246,8 +247,55 @@ export class ApiService {
     );
   }
 
-  //-----------------------------------------------------------------------------------------
 
+  //----------Rezervacija teme-------------------------------------------------------------------
+
+  public rezervirajTemu(id: number): Observable<any> {
+
+    return <any>(
+      this.http.get(this.url + "/rezervacija/"+id , this.getHttpOptions())
+    );
+    
+  }
+  //-------Komentar---------------------------------------------------------------------
+
+  public kreirajKomentar(komentar: string,datum:Date , id: number): Observable<kreirajKomentarInterface> {
+    let payload = {
+      
+      Komentar: komentar,
+      datum: datum
+    };
+    return <any>(
+      this.http.post(this.url + "/komentar/"+id , payload, this.getHttpOptions())
+    );
+  }
+  //----------Ponudena tema-------------------------------------------------------------------
+
+  public dohvatiStanjeRada(id?:number): Observable<any> {
+    // TODO interface
+    return <any>this.http.get(this.url + "/stanje-rada", this.getHttpOptions());
+  }
+
+  //----------Statusi rada-------------------------------------------------------------------
+
+  public dohvatiStatusRada(id?:number): Observable<any> {
+    // TODO interface
+    return <any>this.http.get(this.url + "/statusi-rada", this.getHttpOptions());
+  }
+
+  //----------Odlucivanje-------------------------------------------------------------------
+
+  public SpremiOdluku(rad_id?:number , statusi_rada_id?: number): Observable<any> {
+    let payload = {
+      statusi_rada_id:statusi_rada_id
+    };
+    return <any>(
+      this.http.post(this.url + "/odlucivanje/"+rad_id , payload, this.getHttpOptions())
+    );
+  }
+
+
+  //-----------------------------------------------------------------------------------------
   private getHttpOptions(contentType?: 'json' | 'form'): any {
     if(!contentType) contentType = 'json';
     let headers = {};

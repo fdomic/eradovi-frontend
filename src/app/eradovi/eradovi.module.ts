@@ -23,6 +23,9 @@ import { DohvatiStudentaComponent } from './dohvati/dohvati-studenta/dohvati-stu
 import { DohvatiRadComponent } from './dohvati/dohvati-rad/dohvati-rad.component';
 import { DohvatiPonudenuTemuComponent } from './dohvati/dohvati-ponudenu-temu/dohvati-ponudenu-temu.component';
 import { DohvatiOdjelDjelatnikaComponent } from './dohvati/dohvati-odjel-djelatnika/dohvati-odjel-djelatnika.component';
+import { KomentarComponent } from './spremanja/komentar/komentar.component';
+import { DohvatiOdlucivanjeComponent } from './dohvati/dohvati-odlucivanje/dohvati-odlucivanje.component';
+import { OdlucivanjeComponent } from './spremanja/odlucivanje/odlucivanje.component';
 
 
 
@@ -43,7 +46,10 @@ import { DohvatiOdjelDjelatnikaComponent } from './dohvati/dohvati-odjel-djelatn
     DohvatiStudentaComponent,
     DohvatiRadComponent,
     DohvatiPonudenuTemuComponent,
-    DohvatiOdjelDjelatnikaComponent
+    DohvatiOdjelDjelatnikaComponent,
+    KomentarComponent,
+    DohvatiOdlucivanjeComponent,
+    OdlucivanjeComponent
   ],
   imports: [
     ZajednickiModule,

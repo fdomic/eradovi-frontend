@@ -13,7 +13,7 @@ export class DohvatiFakultetComponent  {
   public fakulteti: Array<any> = [];
   editRowId: Array<any> = [];
 
-  constructor( private apiService: ApiService,  private message: NzMessageService ) {
+  constructor( private apiService: ApiService ) {
     this.dohvatiFakultete();
   }
 
@@ -24,16 +24,5 @@ export class DohvatiFakultetComponent  {
       error => console.log(error)
     );
   }
-    
-  public createMessage(type: string): void {
-
-    if(type === 'success' ) {
-      this.message.create(type, `Uspjesno je spremljen fakultet`);
-    }
-    else {
-      this.message.create(type, `Spremanje nije uspjelo`);
-    }
-
-  }
-
+   
 }

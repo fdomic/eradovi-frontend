@@ -24,22 +24,27 @@
 
 }
 .btn-delete{
-  max-width:60px;
+
+  max-width:100px;
   background: #002141;
   
 }
 .btn-edit:hover{
-
   
   background: green;
 
+}
+.btn-delete:hover{
+  
+  background: red;
+  
 }
 
 .contact-form{
   display: flex;
   flex-direction: row;
-  max-width: 800px;
-  padding: 50px;
+  width: 800px;
+  padding: 70px;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
@@ -47,8 +52,7 @@
 .input-fields{
   display: flex;
   flex-direction: column;
-  margin-right: 4%;
-  
+ 
 }
 
 .input-fields,

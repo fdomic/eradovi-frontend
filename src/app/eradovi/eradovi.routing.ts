@@ -3,26 +3,43 @@ import { Routes, RouterModule } from "@angular/router";
 import { AutentifikacijaGuardService } from '../autentifikacija/autentifikacija.guard';
 import { NavigationComponent } from "./navigation/navigation.component";
 
-
-
-// Spremanje
+// FakultetComponent
 import { FakultetComponent } from './spremanja/fakultet/fakultet.component';
-import { OdjelComponent } from './spremanja/odjel/odjel.component';
-import { UcitajComponent } from './spremanja/ucitaj/ucitaj.component';
-import { OdjelDjelatnikaComponent } from './spremanja/odjel-djelatnika/odjel-djelatnika.component';
-import { DjelatnikComponent } from './spremanja/djelatnik/djelatnik.component';
-import { StudentComponent } from './spremanja/student/student.component';
-import { RadComponent } from './spremanja/rad/rad.component';
-import { PonudeneTemeComponent } from './spremanja/ponudene-teme/ponudene-teme.component';
-
-//Dohvati
 import { DohvatiFakultetComponent } from './dohvati/dohvati-fakultet/dohvati-fakultet.component';
+
+// OdjelComponent
+import { OdjelComponent } from './spremanja/odjel/odjel.component';
 import { DohvatiOdjelComponent } from './dohvati/dohvati-odjel/dohvati-odjel.component';
-import { DohvatiDjelatnikaComponent } from './dohvati/dohvati-djelatnika/dohvati-djelatnika.component';
-import { DohvatiStudentaComponent } from './dohvati/dohvati-studenta/dohvati-studenta.component';
+
+// UcitajComponent
+import { UcitajComponent } from './spremanja/ucitaj/ucitaj.component';
+
+// OdjelDjelatnikaComponent
+import { OdjelDjelatnikaComponent } from './spremanja/odjel-djelatnika/odjel-djelatnika.component';
 import { DohvatiOdjelDjelatnikaComponent } from './dohvati/dohvati-odjel-djelatnika/dohvati-odjel-djelatnika.component';
+
+// DjelatnikComponent
+import { DjelatnikComponent } from './spremanja/djelatnik/djelatnik.component';
+import { DohvatiDjelatnikaComponent } from './dohvati/dohvati-djelatnika/dohvati-djelatnika.component';
+
+// StudentComponent
+import { StudentComponent } from './spremanja/student/student.component';
+import { DohvatiStudentaComponent } from './dohvati/dohvati-studenta/dohvati-studenta.component';
+
+// RadComponent
+import { RadComponent } from './spremanja/rad/rad.component';
 import { DohvatiRadComponent } from './dohvati/dohvati-rad/dohvati-rad.component';
+
+// PonudeneTemeComponent
+import { PonudeneTemeComponent } from './spremanja/ponudene-teme/ponudene-teme.component';
 import { DohvatiPonudenuTemuComponent } from './dohvati/dohvati-ponudenu-temu/dohvati-ponudenu-temu.component';
+
+// KomentarComponent
+import { KomentarComponent } from './spremanja/komentar/komentar.component';
+
+//Odlucivanje
+import { OdlucivanjeComponent } from './spremanja/odlucivanje/odlucivanje.component';
+import { DohvatiOdlucivanjeComponent } from './dohvati/dohvati-odlucivanje/dohvati-odlucivanje.component';
 
 
 const EradoviRoutes: Routes = [
@@ -43,6 +60,10 @@ const EradoviRoutes: Routes = [
       { component: OdjelComponent, path: "odjel/:id" },
       { component: DohvatiOdjelComponent, path: "dohvati-odjel" },
 
+      //Odjel djelatnika
+      { component: OdjelDjelatnikaComponent, path: "odjel-djelatnika" },
+      { component: DohvatiOdjelDjelatnikaComponent, path: "dohvati-odjel-djelatnika" },
+
       //Rad
       { component: RadComponent, path: "rad" },
       { component: RadComponent, path: "rad/:id" },
@@ -53,21 +74,23 @@ const EradoviRoutes: Routes = [
       { component: PonudeneTemeComponent, path: "ponudene-teme/:id" }, 
       { component: DohvatiPonudenuTemuComponent, path: "dohvati-ponudenu-temu" },
 
-      // Spremanje
-      
-      
-      { component: UcitajComponent, path: "ucitaj" },
-      { component: DjelatnikComponent, path: "djelatnik" },
+      //Student
       { component: StudentComponent, path: "student" },
-      { component: OdjelDjelatnikaComponent, path: "odjel-djelatnika" },
-  
-
-      //Dohvati
-      
-     
-      { component: DohvatiDjelatnikaComponent, path: "dohvati-djelatnika" },
       { component: DohvatiStudentaComponent, path: "dohvati-studenta" },
-      { component: DohvatiOdjelDjelatnikaComponent, path: "dohvati-odjel-djelatnika" },
+
+      //Djelatnik
+      { component: DjelatnikComponent, path: "djelatnik" },
+      { component: DohvatiDjelatnikaComponent, path: "dohvati-djelatnika" },
+
+      // Spremanje datoteke
+      { component: UcitajComponent, path: "ucitaj" },
+      
+      //Komentar
+      { component: KomentarComponent, path: "komentar/:id" },
+
+      //
+      { component: DohvatiOdlucivanjeComponent, path: "dohvati-odlucivanje" },
+      { component: OdlucivanjeComponent, path: "odlucivanje/:id/:statusi_rada_id" },
       
       { path: "**", redirectTo: "fakultet", pathMatch: "full" }
     ]

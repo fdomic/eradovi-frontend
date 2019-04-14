@@ -1,0 +1,20 @@
+
+<form [formGroup]="this.myForm" >
+  <div>
+    <div class="wrapper">
+      <div class="contact-form" >
+        <div class="input-fields" style=" width: 100%">  
+            <textarea  rows="10" nz-input formControlName= "komentar" ></textarea>
+              
+            <input class="input" placeholder="datum" formControlName="datum">
+            
+            <button class="btn"  (click)="this.kreirajKomentar() "  >
+              Spremi komenat
+            </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
