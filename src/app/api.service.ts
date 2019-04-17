@@ -200,33 +200,41 @@ export class ApiService {
 
   public kreirajrad(
     statusi_rada_id: string,
-  
-    djelatnik_id: string,
+    
     naziv_hr: string,
     opis_hr: string,
     naziv_eng: string,
     opis_eng: string,
     naziv_tal: string,
     opis_tal: string,
-    id?:number
+  
+    student_id?:number,
+    id?:number,
+    djelatnik_id?: number,
   ): Observable<kreirajRadInterface> {
     let payload = {
       stanje_rada: {
         statusi_rada_id: statusi_rada_id
-      },
+      }, };
 
-      djelatnik_id: djelatnik_id,
-
-      naziv_hr: naziv_hr,
-      opis_hr: opis_hr,
-
-      naziv_eng: naziv_eng,
-      opis_eng: opis_eng,
-
-      naziv_tal: naziv_tal,
-      opis_tal: opis_tal
-    };
+     
     if(id) payload["id"] = id;
+    if(student_id > 0)payload["student_id"] = student_id;
+    if(djelatnik_id > 0)payload["djelatnik_id"] = djelatnik_id;
+  
+      
+     payload["naziv_hr"] = naziv_hr;
+     payload["opis_hr"] = opis_hr;
+     
+     payload["naziv_eng"] = naziv_eng;
+     payload["opis_eng"] = opis_eng;
+     
+     payload["naziv_tal"] = naziv_tal;
+     payload["opis_tal"] = opis_tal;
+     
+
+
+
     return <any>(
       this.http.post(this.url + "/rad", payload, this.getHttpOptions())
     );
@@ -300,6 +308,13 @@ export class ApiService {
   }
   //-------Komentar---------------------------------------------------------------------
 
+
+  public dohvatiKomentar(id?:number): Observable<any> {
+    
+    
+    return <any>this.http.get(this.url + "/komentar", this.getHttpOptions());
+  }
+
   public kreirajKomentar(komentar: string,datum:Date , id_rada: number, id?: number): Observable<kreirajKomentarInterface> {
     let payload = {
       
@@ -336,6 +351,13 @@ export class ApiService {
       this.http.post(this.url + "/odlucivanje/"+rad_id , payload, this.getHttpOptions())
     );
   }
+  //----------Odlucivanje-------------------------------------------------------------------
+
+  public Kronologija(rad_id?:number): Observable<any> {
+    
+    return <any>this.http.get(this.url + "/kronologija/" + rad_id, this.getHttpOptions());
+  }
+
 
 
   //-----------------------------------------------------------------------------------------

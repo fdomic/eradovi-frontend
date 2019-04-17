@@ -49,8 +49,9 @@ export class RadComponent implements OnInit {
   
   private kreirajFormu(): void {
     this.myForm = this.fb.group({
-     
-      statusi_rada_id: '1',
+
+      statusi_rada_id:'1',
+      student_id:'',
       djelatnik_id: '',
       naziv_hr: '',
       opis_hr: '',
@@ -66,18 +67,22 @@ export class RadComponent implements OnInit {
 
   public kreirajrad(): void {
     this.apiService.kreirajrad( 
+     
+      
       this.myForm.value.statusi_rada_id, 
-      this.myForm.value.djelatnik_id,
-
       this.myForm.value.naziv_hr,
       this.myForm.value.opis_hr,
 
       this.myForm.value.naziv_eng,
       this.myForm.value.opis_eng,
       
-
       this.myForm.value.naziv_tal,
-      this.myForm.value.opis_tal
+      this.myForm.value.opis_tal,
+
+     
+      this.myForm.value.student_id,
+      this.myForm.value.id,
+      this.myForm.value.djelatnik_id
         ).subscribe(
       response => console.log(response, this.createMessage('success')),
 

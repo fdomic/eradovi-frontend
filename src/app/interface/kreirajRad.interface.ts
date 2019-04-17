@@ -9,7 +9,7 @@ export interface RadInterface {
   stanje_rada: {
       statusi_rada_id: number
     },
-
+    student_id:number,
     djelatnik_id: number,
 
     naziv_hr: string,

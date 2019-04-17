@@ -56,12 +56,26 @@ export class OdlucivanjeComponent implements OnInit {
   public createMessage(type: string): void {
 
     if (this.statusi_rada_id == 2) {
-      this.message.create(type, `Prihvatili ste rad`);
+      if('success'){
+       this.message.create(type, `Prihvatili ste rad`);
+
+      }
+      else{
+        this.message.create(type, `Nemozete donjeti ovu odluku`);
+      }
       
-    } 
+    }
     
     if(this.statusi_rada_id == 3) {
-      this.message.create(type, `Odbili ste rad`);
+     
+
+      if('success'){ 
+        this.message.create(type, `Odbili ste rad`);
+       }
+      else{
+         this.message.create(type, `Nemozete donjeti ovu odluku`);
+       }
+       
     }
     
   }
