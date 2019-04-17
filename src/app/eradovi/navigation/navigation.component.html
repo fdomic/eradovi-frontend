@@ -1,8 +1,11 @@
 <nz-layout>
-  <nz-sider
-    nzCollapsible
+  <nz-sider 
+
+
+    nzCollapsible = "nzCollapsible"
     [(nzCollapsed)]="isCollapsed"
     [nzWidth]="width"
+    
     [nzReverseArrow]="isReverseArrow"
   >
     <div class="logo"></div>
@@ -32,16 +35,16 @@
       </li>
 
       <li nz-submenu>
-        <span title><i nz-icon type="file"></i>
-        <span class="nav-text">Datoteka</span></span>
+        <span title><i nz-icon type="team"></i>
+        <span class="nav-text">Odjel djelatnika</span></span>
         <ul>
-          <li nz-menu-item routerLink="/e-radovi/ucitaj">Ucitaj</li>
+          <li nz-menu-item routerLink="/e-radovi/odjel-djelatnika">Dodaj odjel djelatnika</li>
+          <li nz-menu-item routerLink="/e-radovi/dohvati-odjel-djelatnika">Dohvati odjel djelatnika</li>
         </ul>
       </li>
 
-      
       <li nz-submenu>
-        <span title><i nz-icon type="team"></i>
+        <span title><i nz-icon nzType="user" nzTheme="outline"></i>
         <span class="nav-text">Djelatnika</span></span>
         <ul>
           <li nz-menu-item routerLink="/e-radovi/djelatnik">Dodaj djelatnika</li>
@@ -50,20 +53,20 @@
       </li>
 
       <li nz-submenu>
-        <span title><i nz-icon type="team"></i>
+        <span title><i nz-icon nzType="user" nzTheme="outline"></i>
         <span class="nav-text">Student</span></span>
         <ul>
           <li nz-menu-item routerLink="/e-radovi/student">Dodaj studenta</li>
           <li nz-menu-item routerLink="/e-radovi/dohvati-studenta">Dohvati studenta</li>
         </ul>
       </li>
-
+      
       <li nz-submenu>
-        <span title><i nz-icon type="team"></i>
-        <span class="nav-text">Odjel djelatnika</span></span>
+        <span title><i nz-icon type="file"></i>
+        <span class="nav-text">Ponudena tema</span></span>
         <ul>
-          <li nz-menu-item routerLink="/e-radovi/odjel-djelatnika">Dodaj odjel djelatnika</li>
-          <li nz-menu-item routerLink="/e-radovi/dohvati-odjel-djelatnika">Dohvati odjel djelatnika</li>
+          <li nz-menu-item routerLink="/e-radovi/ponudene-teme">Dodaj ponudena tema</li>
+          <li nz-menu-item routerLink="/e-radovi/dohvati-ponudenu-temu">Dohvati ponudena tema</li>
         </ul>
       </li>
 
@@ -77,13 +80,13 @@
       </li>
 
       <li nz-submenu>
-          <span title><i nz-icon type="file"></i>
-          <span class="nav-text">Ponudena tema</span></span>
-          <ul>
-            <li nz-menu-item routerLink="/e-radovi/ponudene-teme">Dodaj ponudena tema</li>
-            <li nz-menu-item routerLink="/e-radovi/dohvati-ponudenu-temu">Dohvati ponudena tema</li>
-          </ul>
-        </li>
+        <span title><i nz-icon nzType="file-word" nzTheme="outline"></i>
+        <span class="nav-text">Datoteka</span></span>
+        <ul>
+          <li nz-menu-item routerLink="/e-radovi/ucitaj">Ucitaj</li>
+        </ul>
+      </li>
+
 
         <li nz-submenu>
           <span title><i nz-icon type="file"></i>
@@ -94,6 +97,16 @@
           </ul>
         </li>
 
+        <li nz-submenu>
+          <span title>
+          <i nz-icon nzType="message" nzTheme="outline"></i>    
+          <span class="nav-text">Poruke
+          </span></span>
+          <ul>
+            <li nz-menu-item routerLink="/e-radovi/komentar">Poruke</li>
+          </ul>
+        </li>
+       
 
     </ul>
   </nz-sider>

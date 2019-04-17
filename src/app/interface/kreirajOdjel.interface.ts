@@ -1,8 +1,11 @@
 export interface KreirajOdjelInterface {
     success: boolean;
-    data: {
-      id: number;
-      naziv: string;
-      
-    }
+    data: OdjelInterface
+}
+
+export interface OdjelInterface {
+  
+    id: number;
+    naziv: string;
+   
 }

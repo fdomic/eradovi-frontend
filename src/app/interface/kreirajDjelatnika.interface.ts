@@ -1,6 +1,9 @@
 export interface KreirajDjelatnikaInterface {
     success: boolean;
-    data: {
+    data: DjelatnikaInterface;
+}
+
+export interface DjelatnikaInterface {
         users: {
             name:string,
             email: string,
@@ -12,4 +15,3 @@ export interface KreirajDjelatnikaInterface {
         oib: number,
         jmbag: number
     }
-}

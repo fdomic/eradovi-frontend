@@ -1,34 +1,44 @@
 
 
-<form [formGroup]="this.myForm" >  
+<form [formGroup]="this.myForm"  >  
   <div>
     <div class="wrapper">
       <div class="contact-form"  style=" max-width: 400px;">
         <div class="input-fields" style=" width: 100%">
          
-          Odjeli
-          <select class="select" formControlName="odjel_id">
-            <ng-container *ngFor="let odjel of this.odjeli">
-              <option  class="input"  [value]="odjel.id">{{ odjel.naziv }}</option>
-            </ng-container>
-          </select>
-          Djelatnici
-          <select class="select"  formControlName="djelatnik_id">
-            <ng-container *ngFor="let djelatnik of this.djelatnici">
-               <option  class="input"  [value]="djelatnik.id">{{ djelatnik.ime  }}  {{  djelatnik.prezime }}</option>
-            </ng-container>
-          </select>
+          <nz-select
+            formControlName="odjel_id"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Odaberi fakultet"
+          >
+            <nz-option
+              *ngFor="let odjel of this.odjeli "
+              [nzLabel]="odjel.naziv"
+              [nzValue]="odjel.id"
+            ></nz-option>
+          </nz-select>
+    <br>
+          <nz-select
+            formControlName="djelatnik_id"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Odaberi fakultet"
+          >
+            <nz-option
+              *ngFor="let djelatnik of this.djelatnici "
+              [nzLabel]="djelatnik.ime + ' ' + djelatnik.prezime" 
+              [nzValue]="djelatnik.id"
+            ></nz-option>
+          </nz-select>
 
+         
 
-
-          
-
-          <input class="input" placeholder="naziv"  formControlName="naziv" /> 
-          <button class="btn" (click)="this.kreirajOdjelDjelatnika()">Kreiraj odjel</button>
+          <input class="input" placeholder="Naziv"  formControlName="naziv" /> 
+          <button class="btn" (click)="this.kreirajOdjelDjelatnika()" routerLink="/e-radovi/dohvati-odjel-djelatnika" >Kreiraj odjel djelatnika</button>
         </div>  
       </div>
     </div>
   </div>      
 </form>
-  
   

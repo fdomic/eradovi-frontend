@@ -9,6 +9,8 @@ export class NavigationComponent {
   isCollapsed = false;
   isReverseArrow = false;
   width = 200;
-  
+  nzCollapsible = false;
+ 
+
 
 }

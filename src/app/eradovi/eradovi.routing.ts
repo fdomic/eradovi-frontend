@@ -62,6 +62,7 @@ const EradoviRoutes: Routes = [
 
       //Odjel djelatnika
       { component: OdjelDjelatnikaComponent, path: "odjel-djelatnika" },
+      { component: OdjelDjelatnikaComponent, path: "odjel-djelatnika/:id" },
       { component: DohvatiOdjelDjelatnikaComponent, path: "dohvati-odjel-djelatnika" },
 
       //Rad
@@ -76,17 +77,19 @@ const EradoviRoutes: Routes = [
 
       //Student
       { component: StudentComponent, path: "student" },
+      { component: StudentComponent, path: "student/:id" },
       { component: DohvatiStudentaComponent, path: "dohvati-studenta" },
 
       //Djelatnik
       { component: DjelatnikComponent, path: "djelatnik" },
+      { component: DjelatnikComponent, path: "djelatnik/:id" },
       { component: DohvatiDjelatnikaComponent, path: "dohvati-djelatnika" },
 
       // Spremanje datoteke
       { component: UcitajComponent, path: "ucitaj" },
       
       //Komentar
-      { component: KomentarComponent, path: "komentar/:id" },
+      { component: KomentarComponent, path: "komentar" },
 
       //
       { component: DohvatiOdlucivanjeComponent, path: "dohvati-odlucivanje" },

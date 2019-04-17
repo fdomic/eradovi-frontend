@@ -5,16 +5,16 @@
         <div class="input-fields" style=" width: 100%">
           <input class="input" formControlName="rad_id" /> <br />
 
-          
-          <div >
-            <nz-upload  nzListType="" >
-              <button nz-button><i nz-icon type="upload"></i><span>Upload</span></button>
-            </nz-upload>
-          </div>
+        
+
+          <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload"  >
+              <button   nz-button><i nz-icon type="upload"></i><span formControlName="datoteka">Select File</span></button>
+          </nz-upload>
+            
 
           <br>
 
-          <input class="input" formControlName="status_verzije_id" /> <br />
+          <input  class="input" formControlName="status_verzije_id" /> <br />
 
           <button  nz-button nzType="primary" (click)="this.kreirajDatoteku()">Predaj datoteku</button>
 

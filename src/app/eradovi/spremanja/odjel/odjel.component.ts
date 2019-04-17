@@ -11,6 +11,8 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class OdjelComponent implements OnInit {
   
+  nzPlaceHolder = "Fakultet";
+
   public myForm: FormGroup;
 
   public fakulteti: Array<any> = [];
@@ -24,13 +26,16 @@ export class OdjelComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get("id");
 
+
     if (this.id ) {
      
       this.apiService.dohvatiOdjel(this.id).subscribe(response => {
         let odjel = response.data;
-        //TODO što ako je predan ID koji nije u listi    
+        //TODO što ako je predan ID koji nije u listi  
+        console.log(odjel);  
         this.myForm.patchValue({
-          naziv: odjel.naziv 
+          naziv: odjel.naziv,
+          fakultet_id: odjel.fakultet_id
         });
       });
     }
@@ -61,7 +66,7 @@ export class OdjelComponent implements OnInit {
 // ========= HTML METODE =========
   public kreirajOdjel(): void {
     
-    this.apiService.kreirajOdjel(this.myForm.value.fakultet_id , this.myForm.value.naziv ).subscribe(
+    this.apiService.kreirajOdjel(this.myForm.value.fakultet_id , this.myForm.value.naziv,this.id  ).subscribe(
       response => console.log(response, this.createMessage('success')),
 
       error => console.log(error, this.createMessage('error'))

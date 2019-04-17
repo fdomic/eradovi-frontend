@@ -1,6 +1,10 @@
 export interface kreirajStudentaInterface {
     success: boolean;
-    data: {
+    data: StudentaInterface
+}
+
+export interface StudentaInterface {
+    
         users: {
             name:string,
             email: string,
@@ -11,5 +15,5 @@ export interface kreirajStudentaInterface {
         prezime: string,
         oib: number,
         jmbag: number
-    }
+    
 }

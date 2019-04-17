@@ -33,6 +33,18 @@ export class ApiService {
       this.http.post(this.url + "/login", payload, this.getHttpOptions())
     );
   }
+
+  //-------Korisnici---------------------------------------------------------------------
+
+  public dohvatiKorisnika(id?: number): Observable<any> {
+    // TODO interface
+
+    if(id)return <any>this.http.get(this.url + "/user/" + id  , this.getHttpOptions());
+
+    return <any>this.http.get(this.url + "/user"  , this.getHttpOptions());
+  }
+
+
   //-------FAKULTET---------------------------------------------------------------------
 
   public dohvatiFakultete(id?: number): Observable<any> {
@@ -64,12 +76,15 @@ export class ApiService {
 
   public kreirajOdjel(
     fakultet_id: string,
-    naziv: string
+    naziv: string,
+    id?: number
   ): Observable<KreirajOdjelInterface> {
+    
     let payload = {
       fakultet_id: fakultet_id,
       naziv: naziv
     };
+    if(id) payload["id"] = id;
     return <any>(
       this.http.post(this.url + "/odjel", payload, this.getHttpOptions())
     );
@@ -77,8 +92,9 @@ export class ApiService {
 
   //-------DJELATNIK---------------------------------------------------------------------
 
-  public dohvatijDjelatnika(): Observable<any> {
+  public dohvatijDjelatnika(id?:number): Observable<any> {
     // TODO interface
+    if(id) return <any>this.http.get(this.url + "/dijelatnik/"+ id, this.getHttpOptions());
     return <any>this.http.get(this.url + "/dijelatnik", this.getHttpOptions());
   }
 
@@ -89,7 +105,8 @@ export class ApiService {
     ime: string,
     prezime: string,
     oib: string,
-    jmbag: string
+    jmbag: string,
+    id?:number
   ): Observable<KreirajDjelatnikaInterface> {
     let payload = {
       users: {
@@ -102,14 +119,16 @@ export class ApiService {
       oib: oib,
       jmbag: jmbag
     };
+    if(id) payload["id"] = id;
     return <any>(
       this.http.post(this.url + "/dijelatnik", payload, this.getHttpOptions())
     );
   }
   //-------STUDENT---------------------------------------------------------------------
 
-  public dohvatiStudenta(): Observable<any> {
+  public dohvatiStudenta(id?:number): Observable<any> {
     // TODO interface
+    if(id) return <any>this.http.get(this.url + "/student/"+ id, this.getHttpOptions());
     return <any>this.http.get(this.url + "/student", this.getHttpOptions());
   }
 
@@ -120,7 +139,8 @@ export class ApiService {
     ime: string,
     prezime: string,
     oib: string,
-    jmbag: string
+    jmbag: string,
+    id?:number
   ): Observable<kreirajStudentaInterface> {
     let payload = {
       users: {
@@ -133,6 +153,7 @@ export class ApiService {
       oib: oib,
       jmbag: jmbag
     };
+    if(id) payload["id"] = id;
     return <any>(
       this.http.post(this.url + "/student", payload, this.getHttpOptions())
     );
@@ -140,16 +161,26 @@ export class ApiService {
 
   //---------ODJEL DJELATNIKA----------------------------------------------------------------
 
+  
+  public dohvatiOdjelDjelatnika(id?:number): Observable<any> {
+    // TODO interface
+    if(id) return <any>this.http.get(this.url + "/odijel-djelatnik/"+ id, this.getHttpOptions());
+    return <any>this.http.get(this.url + "/odijel-djelatnik", this.getHttpOptions());
+  }
+
+
   public kreirajOdjelDjelatnika(
     odjel_id: string,
     djelatnik_id: string,
-    naziv: string
+    naziv: string,
+    id?:number
   ): Observable<kreirajOdjelDjelatnikaInterface> {
     let payload = {
       odjel_id: odjel_id,
       djelatnik_id: djelatnik_id,
       naziv: naziv
     };
+    if(id) payload["id"] = id;
     return <any>(
       this.http.post(
         this.url + "/odijel-djelatnik",
@@ -176,7 +207,8 @@ export class ApiService {
     naziv_eng: string,
     opis_eng: string,
     naziv_tal: string,
-    opis_tal: string
+    opis_tal: string,
+    id?:number
   ): Observable<kreirajRadInterface> {
     let payload = {
       stanje_rada: {
@@ -194,6 +226,7 @@ export class ApiService {
       naziv_tal: naziv_tal,
       opis_tal: opis_tal
     };
+    if(id) payload["id"] = id;
     return <any>(
       this.http.post(this.url + "/rad", payload, this.getHttpOptions())
     );
@@ -214,7 +247,8 @@ export class ApiService {
     naziv_eng: string,
     opis_eng: string,
     naziv_tal: string,
-    opis_tal: string
+    opis_tal: string,
+    id?:number
   ): Observable<kreirajPonudenuTemuInterface> {
     let payload = {
      
@@ -230,13 +264,20 @@ export class ApiService {
       naziv_tal: naziv_tal,
       opis_tal: opis_tal
     };
+    if(id) payload["id"] = id;
     return <any>(
       this.http.post(this.url + "/ponudena-tema", payload, this.getHttpOptions())
     );
   }
   //----------DATOTEKA-------------------------------------------------------------------
 
-  public kreirajDatoteku(rad_id: number, payload: FormData): Observable<any> {
+   public dohvatiDatoteku(id?:number): Observable<any> {
+    
+    if(id) return <any>this.http.get(this.url + "/verzije-radova/"+ id, this.getHttpOptions());
+    return <any>this.http.get(this.url + "/verzije-radova", this.getHttpOptions());
+  }
+
+    public kreirajDatoteku(rad_id: number, payload: FormData): Observable<any> {
 
     return <any>(
       this.http.post(
@@ -259,14 +300,15 @@ export class ApiService {
   }
   //-------Komentar---------------------------------------------------------------------
 
-  public kreirajKomentar(komentar: string,datum:Date , id: number): Observable<kreirajKomentarInterface> {
+  public kreirajKomentar(komentar: string,datum:Date , id_rada: number, id?: number): Observable<kreirajKomentarInterface> {
     let payload = {
       
-      Komentar: komentar,
+      komentar: komentar,
       datum: datum
     };
+    if(id) payload["id"] = id;
     return <any>(
-      this.http.post(this.url + "/komentar/"+id , payload, this.getHttpOptions())
+      this.http.post(this.url + "/komentar/"+id_rada , payload, this.getHttpOptions())
     );
   }
   //----------Ponudena tema-------------------------------------------------------------------
@@ -285,10 +327,11 @@ export class ApiService {
 
   //----------Odlucivanje-------------------------------------------------------------------
 
-  public SpremiOdluku(rad_id?:number , statusi_rada_id?: number): Observable<any> {
+  public SpremiOdluku(rad_id?:number , statusi_rada_id?: number, id?: number): Observable<any> {
     let payload = {
       statusi_rada_id:statusi_rada_id
     };
+    if(id) payload["id"] = id;
     return <any>(
       this.http.post(this.url + "/odlucivanje/"+rad_id , payload, this.getHttpOptions())
     );

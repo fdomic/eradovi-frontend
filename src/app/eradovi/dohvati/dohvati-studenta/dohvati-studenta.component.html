@@ -15,15 +15,18 @@
         <td>{{ student.oib }}</td>
         <td>{{ student.jmbag }}</td>
         <td nzLeft="100px">
-          <button
+            <button
+            routerLink="/e-radovi/student/{{ student.id}}"
+            style="color: white; "
             nz-button
             nzType="default"
             nzBlock
             [nzSize]="'small'"
             class="btn-edit" >
-            <a nz-popconfirm nzTitle="Sure to delete?" style="color: white; " >Edit</a>
+            
+            Uređivanje
           </button>
-  
+
           <button
             nz-button
             nzType="danger"

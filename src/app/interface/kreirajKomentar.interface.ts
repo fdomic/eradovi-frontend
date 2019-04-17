@@ -1,6 +1,11 @@
 export interface kreirajKomentarInterface {
     success: boolean;
-    data: {
+    data: KomentarInterface
+
+}
+
+export interface KomentarInterface {
+    
      
         rad_id: string,
         djelatnik_id:string,
@@ -9,5 +14,5 @@ export interface kreirajKomentarInterface {
         datum: Date,
         id: number
 
-    }
+    
 }

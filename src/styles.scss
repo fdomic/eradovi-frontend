@@ -42,8 +42,7 @@
 
 .contact-form{
   display: flex;
-  flex-direction: row;
-  width: 800px;
+  width: 700px;
   padding: 70px;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
@@ -52,6 +51,7 @@
 .input-fields{
   display: flex;
   flex-direction: column;
+  margin: 10px;
  
 }
 
@@ -68,7 +68,7 @@
   border-bottom: 2px solid #002141;
   padding: 10px;
   color: #002141;
-  width: 100%;
+  
 }
 
 
@@ -97,19 +97,35 @@
 
 
 
-@media screen and (max-width: 1150px){
+@media screen and (max-width: 1400px){
   .contact-form{
-    max-width: 300px; 
+    max-width: auto; 
+    height:auto; 
     margin: auto;
     padding: 50px;
   }
-  .msg textarea{
-    height: 20px;
-  }
+
   .input-fields{
     display: flex;
     margin: 0 auto;
   }
+    
+}
+
+@media screen and (max-width: 700px){
+  .contact-form{
+    max-width: 280px;
+    height:auto; 
+    width: auto;
+    margin: auto;
+    padding: 50px;
+  }
+
+  .input-fields{
+    display: flex;
+    margin: 0 auto;
+  }
+  
   
 }
 

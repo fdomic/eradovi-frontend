@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
 import { NzMessageService } from 'ng-zorro-antd';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-odlucivanje',
@@ -12,12 +13,15 @@ import { ActivatedRoute } from '@angular/router';
 export class OdlucivanjeComponent implements OnInit {
 
   private id;
+
   private statusi_rada_id;
   
   public myForm: FormGroup;
 
   public fakulteti: Array<any> = [];
   
+  private url: string = environment.apiServer + "/fakultet";
+
 
   constructor(
     private fb: FormBuilder,
@@ -46,6 +50,7 @@ export class OdlucivanjeComponent implements OnInit {
         response => console.log(response, this.createMessage("success")),
         error => console.log(error, this.createMessage("error"))
       );
+      
   }
 
   public createMessage(type: string): void {
@@ -58,6 +63,8 @@ export class OdlucivanjeComponent implements OnInit {
     if(this.statusi_rada_id == 3) {
       this.message.create(type, `Odbili ste rad`);
     }
+    
   }
 
+  
 }

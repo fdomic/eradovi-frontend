@@ -20,5 +20,6 @@ export class DohvatiDjelatnikaComponent  {
 
       error => console.log(error)
     );
+    
   }
 }

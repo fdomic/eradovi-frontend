@@ -64,7 +64,7 @@ export class FakultetComponent implements OnInit {
     this.apiService
       .kreirajFakultet(this.myForm.value.naziv, this.id)
       .subscribe(
-        response => console.log(response, this.createMessage("success")),
+        response => this.createMessage("success"),
         error => console.log(error, this.createMessage("error"))
       );
   }
@@ -72,7 +72,7 @@ export class FakultetComponent implements OnInit {
   public createMessage(type: string): void {
     if (type === "success") {
       this.message.create(type, `Uspjesno je spremljen fakultet`);
-      
+      // e-radovi/dohvati-fakultet
     } else {
       this.message.create(type, `Spremanje nije uspjelo`);
     }

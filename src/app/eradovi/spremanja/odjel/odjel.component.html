@@ -5,15 +5,14 @@
         <div class="input-fields" style=" width: 100%">
           <nz-select
             formControlName="fakultet_id"
-            style="width: 200px;"
             nzShowSearch
             nzAllowClear
             nzPlaceHolder="Odaberi fakultet"
           >
             <nz-option
               *ngFor="let fakultet of this.fakulteti "
-              nzLabel="{{ fakultet.naziv }}"
-              nzValue="fakultet.id "
+              [nzLabel]="fakultet.naziv"
+              [nzValue]="fakultet.id"
             ></nz-option>
           </nz-select>
 
@@ -22,7 +21,7 @@
             placeholder="Ime odjela"
             formControlName="naziv"
           />
-          <button class="btn" (click)="this.kreirajOdjel()">
+          <button class="btn" (click)="this.kreirajOdjel()" routerLink="/e-radovi/dohvati-odjel">
             Kreiraj odjel
           </button>
         </div>

@@ -1,3 +1,41 @@
-<p>
-  dohvati-odjel-djelatnika works!
-</p>
+<nz-table #basicTable [nzData]="this.odjelidjelatnika">
+    <thead>
+      <tr>
+        <th>Odjel</th>
+        <th>Djelatnik</th>
+        <th>Naziv Odjela</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let odjeldjelatnika of basicTable.data">
+        <tr >
+          <td >{{ this.getNazivOdjela(odjeldjelatnika.odjel_id) }}</td>
+          <td >{{ this.getNazivDjelatnikaIme(odjeldjelatnika.djelatnik_id) + ' ' +  this.getNazivDjelatnikaPrezime(odjeldjelatnika.djelatnik_id)  }}</td>
+          <td >{{ odjeldjelatnika.naziv }}</td>
+          <td nzLeft="100px">
+            <button
+              routerLink="/e-radovi/odjel-djelatnika/{{ odjeldjelatnika.id}}"
+              style="color: white; "
+              nz-button
+              nzType="default"
+              nzBlock
+              [nzSize]="'small'"
+              class="btn-edit" >
+              
+              Uređivanje
+            </button>
+    
+            <button
+              nz-button
+              nzType="danger"
+              nzBlock
+              nzBlock
+              [nzSize]="'small'"
+              class="btn-delete">
+              <a nz-popconfirm nzTitle="Sure to delete?" style="color: white; ">Delete</a>
+            </button>
+            </td>
+        </tr>
+    </tbody>
+  </nz-table>
+  

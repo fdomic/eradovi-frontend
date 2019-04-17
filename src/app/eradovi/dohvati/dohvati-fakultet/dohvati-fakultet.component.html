@@ -1,6 +1,10 @@
 
 
-<nz-table #basicTable [nzData]="this.fakulteti">
+<div  ng-app="autoRefreshApp" ></div>
+
+<nz-table #basicTable [nzData]="this.fakulteti"
+ 
+>
  
   <thead>
     <tr>
@@ -30,7 +34,7 @@
         nzBlock
         [nzSize]="'small'"
         style="color: white; "
-        class="btn-edit" >
+        class="btn-delete" >
           Delete
         </button>
 

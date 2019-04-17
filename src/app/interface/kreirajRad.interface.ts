@@ -1,20 +1,24 @@
 export interface kreirajRadInterface {
     success: boolean;
-    data: {
+    data: RadInterface
+}
 
-    stanje_rada: {
-        statusi_rada_id: number
-      },
 
-      djelatnik_id: number,
+export interface RadInterface {
+ 
+  stanje_rada: {
+      statusi_rada_id: number
+    },
 
-      naziv_hr: string,
-      opis_hr: string,
+    djelatnik_id: number,
 
-      naziv_eng: string,
-      opis_eng: string,
+    naziv_hr: string,
+    opis_hr: string,
 
-      naziv_tal: string,
-      opis_tal: string
-    }
+    naziv_eng: string,
+    opis_eng: string,
+
+    naziv_tal: string,
+    opis_tal: string
+  
 }
