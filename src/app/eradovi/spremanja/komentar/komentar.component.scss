@@ -1,0 +1,75 @@
+.box{
+    
+    
+    display: flex;
+    justify-content: space-around;
+    
+   }
+  
+   .red{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 1px;
+   }
+   
+   .stupac{
+   
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     margin: 1px;
+  
+   }
+   
+ .contact-form{
+  display: flex;
+  width: 600px;
+  height: 300px;
+  margin: 0 auto;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+ }
+ 
+.input-fields{
+  display: flex;
+  flex-direction: column;
+}
+
+.input-fields .input,
+.msg textarea{
+  width:300px;
+  margin: 10px 0;
+  background: transparent;
+  border: 0px;
+  border-bottom: 2px solid #002141;
+  padding: 10px;
+  color: #002141;
+ 
+}
+ 
+ 
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #002141;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #002141;
+}
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #002141;
+}
+ 
+.btn {
+    background: #002141;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+ 

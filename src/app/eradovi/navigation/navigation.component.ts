@@ -10,7 +10,5 @@ export class NavigationComponent {
   isReverseArrow = false;
   width = 200;
   nzCollapsible = false;
- 
-
 
 }

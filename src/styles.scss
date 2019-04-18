@@ -2,13 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-.wrapper{
-      display: flex;
-    	justify-content: center;
-    	align-items: center;
-      height: calc(100vh - 300px);
-      width: 100%;
-}
 
 .table {
    
@@ -40,54 +33,59 @@
   
 }
 
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: 'Roboto', sans-serif;
+}
+ 
+
+ 
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 200px);
+    width: 100%;
+}
+ 
 .contact-form{
-  max-width: 800px; 
-  max-height: 500px; 
-  padding: 20px;
+  display: flex;
+  width: 600px;
+  height: 300px;
+  margin: 0 auto;
+
+  padding: 50px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
-
+ 
 .input-fields{
   display: flex;
   flex-direction: column;
-  margin: 10px;
+}
  
-}
-
-.box{
-
- display: flex;
- flex-direction: row;
- justify-content: space-around;
- margin: 0px;
- padding: 0px;
-}
-
-.nesto{
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-
-}
-
 .input-fields,
 .msg{
   width: 48%;
 }
-
+ 
 .input-fields .input,
 .msg textarea{
+  width:300px;
   margin: 10px 0;
   background: transparent;
   border: 0px;
   border-bottom: 2px solid #002141;
   padding: 10px;
   color: #002141;
-  
+ 
 }
-
+ 
+ 
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   color: #002141;
@@ -100,7 +98,7 @@
   /* IE 10+ */
   color: #002141;
 }
-
+ 
 .btn {
     background: #002141;
     text-align: center;
@@ -110,37 +108,53 @@
     cursor: pointer;
     text-transform: uppercase;
 }
+ 
 
-@media screen and (max-width: 1000px){
-  .contact-form{
-    max-width: auto; 
-    height:auto; 
-    margin: auto;
-    padding: 50px;
+@media screen and (max-width: 1200px){
+    .contact-form{
+      max-width: auto; 
+      height:auto; 
+      margin: auto;
+      padding: 50px;
+    }
+  
+    .input-fields{
+      display: flex;
+      margin: 0 auto;
+    }
+    .input{
+      width:50px;
+    }
+  
   }
 
-  .input-fields{
-    display: flex;
-    margin: 0 auto;
-  }
+  @media screen and (max-width: 700px){
+
+    .contact-form{
+      
+      width: 100px;
+      height: 1000px; 
+      margin: 5px;
+      padding: 5px;
+      flex-direction: column;
+
+    }
+  
+    .input-fields
+    {
+      display: flex;
+      margin: 0 auto;
+    }
+    .input{
+      height: 10px;
+      width: 10px;
+      margin: 1px 0;
+      background: transparent;
+      border: 0px;
+      
+      border-bottom: 2px solid #002141;
+      padding: 10px;
+      color: #002141;
+    }
     
-}
-
-@media screen and (max-width: 700px){
-  .contact-form{
-    max-width: 280px;
-    height:auto; 
-    width: auto;
-    margin: auto;
-    padding: 50px;
   }
-
-  .input-fields
-  {
-    display: flex;
-    margin: 0 auto;
-  }
-  
-  
-}
-

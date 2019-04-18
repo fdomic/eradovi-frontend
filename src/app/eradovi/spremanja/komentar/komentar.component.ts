@@ -56,23 +56,44 @@ export class KomentarComponent {
     this.myForm = this.fb.group({
       rad_id:"",
       komentar: "",
-      datum:""
+      datum:"",
+
+      naziv_hr:"",
+      opis_hr:"",
+      profesor:"",
+
     });
   }
 
-  odabraniRad(){
 
-    console.log(this.myForm.value.rad_id);
+  odabraniRad(){
     this.Kronologija(this.myForm.value.rad_id);
+    
   }
 
+  
   private Kronologija(rad_id): void {
     this.apiService.Kronologija(rad_id).subscribe(
       response => this.kronologija = response.data,
 
       error => console.log(error)
     );
+    this.dohvatiRad(rad_id);
   }
+
+  private dohvatiRad(rad_id): void {
+    this.apiService.dohvatirad(rad_id).subscribe(response => {
+        let rad = response.data;
+      
+        this.myForm.patchValue({
+          naziv_hr: rad.naziv_hr,
+          opis_hr: rad.opis_hr,
+          profesor:this.getIme(rad.djelatnik_id) +' '+this.getPrezime(rad.djelatnik_id)
+        });
+      });
+    
+  }
+
 
   // ========= HTML METODE =========
 
@@ -98,7 +119,7 @@ export class KomentarComponent {
   
   public getIme(student_id?: number , djelatnik_id?:number ): string {
    
-    let ime= "filip";
+    let ime= "N.";
 
     if(student_id > 0){
       let student = this.studenti.find(x => x.id === student_id);
@@ -109,13 +130,13 @@ export class KomentarComponent {
       return  djelatnik.ime;
     }
     else{
-      return ime;
+      return <string> ime;
     }
   }
 
   public getPrezime(student_id?: number , djelatnik_id?:number ): string {
    
-    let ime= "Domic";
+    let ime= "N.";
 
     if(student_id > 0){
       let student = this.studenti.find(x => x.id === student_id);
@@ -126,7 +147,19 @@ export class KomentarComponent {
       return  djelatnik.prezime;
     }
     else{
-      return ime;
+      return <string> ime;
+    }
+  }
+
+  listOfData: any[] = [];
+
+  ngOnInit(): void {
+    for (let i = 0; i < 100; i++) {
+      this.listOfData.push({
+        name: `Edward King ${i}`,
+        age: 32,
+        address: `London, Park Lane no. ${i}`
+      });
     }
   }
 

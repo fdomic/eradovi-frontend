@@ -1,77 +1,107 @@
-
-
- 
 <div class="box">
-
     <div class="stupac">
-        <form [formGroup]="this.myForm">
-          <div class="wrapper">
-            <div class="contact-form" style="width: 400px; height: 450px;  ">
-              <div class="input-fields" style="width: 100%;">
-                <nz-select
-                  formControlName="rad_id"
-                  nzShowSearch
-                  nzAllowClear
-                  nzPlaceHolder="Odaberi rad"
-                
-                >
-                  <nz-option
-                    *ngFor="let rad of this.radovi"
-                    [nzLabel]="rad.naziv_hr"
-                    [nzValue]=" rad.id"
-                    
-                    
-                  > </nz-option >
-                </nz-select>
     
-                <button class="btn" (click)="this.odabraniRad()">
-                  Spremi rad
-                </button>
-              </div>
+      <div class="red">
+        <form [formGroup]="this.myForm">
+          
+            <div class="contact-form"   >
+              <div class="input-fields" style="width: 100%;">
+                <div class="red">
+                    <nz-select
+                    formControlName="rad_id"
+                    nzShowSearch
+                    nzAllowClear
+                    nzPlaceHolder="Odaberi rad"
+                  >
+                    <nz-option
+                      *ngFor="let rad of this.radovi"
+                      [nzLabel]="rad.naziv_hr"
+                      [nzValue]="rad.id"
+                    >
+                    </nz-option>
+                  </nz-select>
+                  <button nz-button nzType="primary" nzShape="circle" (click)="this.odabraniRad()" style="margin-left: 2px; background: #002141;"><i nz-icon type="search"></i></button>
+                </div>
+     
+                <form [formGroup]="this.myForm">   
+
+                  <input nz-input class="input"  [disabled]="true" formControlName="naziv_hr" />
+                  <input nz-input class="input" [disabled]="true" formControlName="opis_hr" />
+                  <input nz-input class="input" [disabled]="true" formControlName="profesor" />
+
+                </form>
+                
+              
             </div>
           </div>
         </form>
-
-
-    <form [formGroup]="this.myForm">
-      <div class="wrapper">
-        <div class="contact-form" style="width: 400px; height: 450px;  ">
-          <div class="input-fields" style="width: 100%;">
-            
-            <textarea rows="10" nz-input formControlName="komentar"></textarea>
-
-            <input  type="date" class="input" placeholder="datum" formControlName="datum" />
-            <button class="btn" (click)="this.kreirajKomentar()">
-              Spremi komenat
-            </button>
-          </div>
-        </div>
       </div>
-    </form>
-  </div>
-
-  <div class="red">
-    <div class="wrapper">
-      <div class="contact-form" style="width: 400px; height: 900px; ">
-        <div class="input-fields" style="width: 100%;" >
+      <div class="red">
+        <form [formGroup]="this.myForm">
+          
+            <div class="contact-form" >
+              <div class="input-fields" style="width: 100%;">
+                <textarea
+                  rows="10"
+                  nz-input
+                  formControlName="komentar"
+                ></textarea>
+  
+                <input
+                  type="date"
+                  
+                  placeholder="datum"
+                  formControlName="datum"
+                />
+                <button class="btn" (click)="this.kreirajKomentar()">
+                  Spremi komenat
+                </button>
+              </div>
+          
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="stupac">
       
-          <nz-comment
-           
-            *ngFor="let kron of this.kronologija"
-
-            nzAuthor="{{ this.getIme(kron.student_id,kron.djelatnik_id) + ' ' + this.getPrezime(kron.student_id,kron.djelatnik_id) }}"
-
-            nzDatetime="{{ kron.datum }}"
-          >
-            <nz-avatar nz-comment-avatar nzIcon="user"></nz-avatar>
-            <nz-comment-content>
+        <div class="contact-form" style="height: 600px; ">
+            <div class="input-fields" style="width: 100%;">
+        
+          <nz-table
+    #headerTable
+    [nzData]="listOfData"
+    [nzPageSize]="500"
+    [nzScroll]="{ y: '450px' }"
+    style="border: none"
+  >
+    <tbody>
+      <tr>
+        <nz-comment
+          *ngFor="let kron of this.kronologija"
+          nzAuthor="{{
+            this.getIme(kron.student_id, kron.djelatnik_id) +
+              ' ' +
+              this.getPrezime(kron.student_id, kron.djelatnik_id)
+          }}"
+          nzDatetime="{{ kron.datum }}"
+        >
+          <nz-avatar nz-comment-avatar nzIcon="user"></nz-avatar>
+          <nz-comment-content>
+            <td>
               <p>
                 {{ kron.labela }}
               </p>
-            </nz-comment-content>
-          </nz-comment>
+            </td>
+          </nz-comment-content>
+        </nz-comment>
+      </tr>
+    </tbody>
+  </nz-table>
+  
+            
+          
         </div>
       </div>
     </div>
   </div>
-</div>
+  
