@@ -23,11 +23,29 @@
                   <button nz-button nzType="primary" nzShape="circle" (click)="this.odabraniRad()" style="margin-left: 2px; background: #002141;"><i nz-icon type="search"></i></button>
                 </div>
      
-                <form [formGroup]="this.myForm">   
+                <form [formGroup]="this.myForm" >   
 
-                  <input nz-input class="input"  [disabled]="true" formControlName="naziv_hr" />
-                  <input nz-input class="input" [disabled]="true" formControlName="opis_hr" />
-                  <input nz-input class="input" [disabled]="true" formControlName="profesor" />
+                
+                  <br>
+
+                 <table >
+                  <tr>
+                    <th> <p class="input" style=" border: none; margin: 2px;  width:100px;">Naziv rada:</p> </th>
+                    <th> <input class="input" style=" padding:none; margin: 2px" formControlName="naziv_hr" /><br></th>
+                  </tr>
+
+                  <tr >
+                    <th ><p class="input" style=" border: none; margin: 2px; width:100px;"> Mentor:</p></th> 
+                    <th><input class="input" style=" margin: 2px" formControlName="profesor" /><br></th>
+                  </tr>
+
+                  <tr>
+                    <th  ><p class="input" style="  border: none;  margin: 2px; width:100px;"> Student:</p></th>
+                    <th> <input class="input" style=" margin: 2px" formControlName="student" /><br></th>
+                  </tr>
+
+                </table>
+
 
                 </form>
                 
@@ -36,6 +54,7 @@
           </div>
         </form>
       </div>
+      
       <div class="red">
         <form [formGroup]="this.myForm">
           
@@ -54,7 +73,7 @@
                   formControlName="datum"
                 />
                 <button class="btn" (click)="this.kreirajKomentar()">
-                  Spremi komenat
+                  Spremi komentar
                 </button>
               </div>
           
@@ -69,7 +88,7 @@
         
           <nz-table
     #headerTable
-    [nzData]="listOfData"
+    [nzData]="kronologija"
     [nzPageSize]="500"
     [nzScroll]="{ y: '450px' }"
     style="border: none"
@@ -88,9 +107,31 @@
           <nz-avatar nz-comment-avatar nzIcon="user"></nz-avatar>
           <nz-comment-content>
             <td>
-              <p>
+              <p *ngIf="kron.labela > 0">
                 {{ kron.labela }}
               </p>
+
+              <p *ngIf="kron.labela == null">
+                 
+                  Verzija rada:
+                  {{ kron.verzija_predanog_rada }}
+                  <br>
+                  Ime datoteke:
+                  {{ kron.datoteka_ime }}
+                  <br>
+                  
+              <button nz-button nzType="primary" nzShape="round" (click)="this.skini(kron.datoteka,kron.datoteka_ime)">
+                <i nz-icon type="download" ></i>
+                Download
+              </button>
+
+
+              </p>
+
+              
+              
+
+
             </td>
           </nz-comment-content>
         </nz-comment>

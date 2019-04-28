@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
 import { NzMessageService } from 'ng-zorro-antd';
-import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 
 @Component({
@@ -18,13 +17,16 @@ export class KomentarComponent {
   public studenti: Array<any> = [];
   public djelatnici: Array<any> = [];
   public kronologija: Array<any> = [];
+
+
+  pomocna:0;
   
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
    
     private message: NzMessageService,
-    private route: ActivatedRoute,
+    
     
   ) {
     this.init();
@@ -61,6 +63,7 @@ export class KomentarComponent {
       naziv_hr:"",
       opis_hr:"",
       profesor:"",
+      student:""
 
     });
   }
@@ -82,13 +85,15 @@ export class KomentarComponent {
   }
 
   private dohvatiRad(rad_id): void {
+  
     this.apiService.dohvatirad(rad_id).subscribe(response => {
         let rad = response.data;
-      
+        
         this.myForm.patchValue({
           naziv_hr: rad.naziv_hr,
-          opis_hr: rad.opis_hr,
-          profesor:this.getIme(rad.djelatnik_id) +' '+this.getPrezime(rad.djelatnik_id)
+     
+          profesor:this.getIme(this.pomocna,rad.djelatnik_id) +' '+this.getPrezime(this.pomocna,rad.djelatnik_id),
+          student:this.getIme(rad.djelatnik_id,this.pomocna) +' '+this.getPrezime(rad.djelatnik_id,this.pomocna)
         });
       });
     
@@ -151,17 +156,13 @@ export class KomentarComponent {
     }
   }
 
-  listOfData: any[] = [];
+  public skini(datoteka:string ,datoteka_ime:string){
 
-  ngOnInit(): void {
-    for (let i = 0; i < 100; i++) {
-      this.listOfData.push({
-        name: `Edward King ${i}`,
-        age: 32,
-        address: `London, Park Lane no. ${i}`
-      });
-    }
+    let path=datoteka+'/'+datoteka_ime;
+
+    console.log(path);
+
+    
   }
-
 
 }

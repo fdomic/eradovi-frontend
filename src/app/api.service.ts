@@ -358,8 +358,7 @@ export class ApiService {
     return <any>this.http.get(this.url + "/kronologija/" + rad_id, this.getHttpOptions());
   }
 
-
-
+  
   //-----------------------------------------------------------------------------------------
   private getHttpOptions(contentType?: 'json' | 'form'): any {
     if(!contentType) contentType = 'json';

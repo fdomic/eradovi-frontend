@@ -48,7 +48,7 @@ const EradoviRoutes: Routes = [
     component: NavigationComponent,
     canActivateChild: [ AutentifikacijaGuardService ],
     children: [
-      { path: "", redirectTo: "fakultet", pathMatch: "full" },   
+      { path: "", redirectTo: "komentar", pathMatch: "full" },   
 
       //Fakultet
       { component: FakultetComponent, path: "fakultet" },
@@ -95,7 +95,7 @@ const EradoviRoutes: Routes = [
       { component: DohvatiOdlucivanjeComponent, path: "dohvati-odlucivanje" },
       { component: OdlucivanjeComponent, path: "odlucivanje/:id/:statusi_rada_id" },
       
-      { path: "**", redirectTo: "fakultet", pathMatch: "full" }
+      { path: "**", redirectTo: "komentar", pathMatch: "full" }
     ]
   }
 ];
