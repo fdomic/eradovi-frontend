@@ -3,7 +3,32 @@
     <div class="wrapper">
       <div class="contact-form" style=" max-width: 400px;">
         <div class="input-fields" style=" width: 100%">
-          <input class="input" formControlName="rad_id" /> <br />
+          
+          <nz-select
+          formControlName="rad_id"
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="Odaberi rad"
+        >
+          <nz-option
+            *ngFor="let rad of this.radovi "
+            [nzLabel]="rad.naziv_hr"
+            [nzValue]="rad.id"
+          ></nz-option>
+        </nz-select><br>
+
+        <nz-select
+          formControlName="status_verzije_id"
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="Odaberi rad"
+        >
+          <nz-option
+            *ngFor="let statusi of this.statusi_verzija "
+            [nzLabel]="statusi.naziv"
+            [nzValue]="statusi.id"
+          ></nz-option>
+        </nz-select><br>
 
         
 
@@ -14,7 +39,7 @@
 
           <br>
 
-          <input  class="input" formControlName="status_verzije_id" /> <br />
+          
 
           <button  nz-button nzType="primary" (click)="this.kreirajDatoteku()">Predaj datoteku</button>
 

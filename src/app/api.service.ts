@@ -340,6 +340,14 @@ export class ApiService {
     return <any>this.http.get(this.url + "/statusi-rada", this.getHttpOptions());
   }
 
+  //----------Statusi rada-------------------------------------------------------------------
+
+  public statusi_verzija(id?:number): Observable<any> {
+    // TODO interface
+    return <any>this.http.get(this.url + "/status-verzije", this.getHttpOptions());
+  }
+
+  
   //----------Odlucivanje-------------------------------------------------------------------
 
   public SpremiOdluku(rad_id?:number , statusi_rada_id?: number, id?: number): Observable<any> {
