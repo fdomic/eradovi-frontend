@@ -9,8 +9,8 @@ import { ApiService } from '../../api.service';
 })
 export class LoginComponent implements OnInit {
   public form = {
-    email: "ref@unipu.hr",
-    password: "ref"
+    email: "",
+    password: ""
   };
 
   constructor(private apiService: ApiService, private router: Router) {
