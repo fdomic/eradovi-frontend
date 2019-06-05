@@ -107,11 +107,11 @@
           <nz-avatar nz-comment-avatar nzIcon="user"></nz-avatar>
           <nz-comment-content>
             <td>
-              <p *ngIf="kron.labela ">
+              
                 {{ kron.labela }}
-              </p>
+             
 
-              <p *ngIf="kron.labela == null">
+              <p *ngIf="kron.labela === null">
                  
                   Verzija rada:
                   {{ kron.verzija_predanog_rada }}
@@ -122,16 +122,12 @@
 
                   
               <button nz-button nzType="primary" nzShape="round" >
-                <i nz-icon type="download" ></i>
+                <i nz-icon type="download" (click)="this.skini()" ></i>
                 Download
               </button>
 
 
               </p>
-
-              
-              
-
 
             </td>
           </nz-comment-content>

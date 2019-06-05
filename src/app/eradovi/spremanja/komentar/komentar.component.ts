@@ -127,11 +127,11 @@ export class KomentarComponent {
     let ime= "N.";
 
     if(student_id > 0){
-      let student = this.studenti.find(x => x.id === student_id);
+      let student = this.studenti.find(x => x.korisnik_id === student_id);
       return  student.ime;
     }
     if(djelatnik_id > 0){
-      let djelatnik = this.djelatnici.find(x => x.id === djelatnik_id);
+      let djelatnik = this.djelatnici.find(x => x.korisnik_id === djelatnik_id);
       return  djelatnik.ime;
     }
     else{
@@ -141,18 +141,19 @@ export class KomentarComponent {
 
   public getPrezime(student_id?: number , djelatnik_id?:number ): string {
    
-    let ime= "N.";
+    let prezime= "N.";
 
     if(student_id > 0){
-      let student = this.studenti.find(x => x.id === student_id);
+      let student = this.studenti.find(x => x.korisnik_id === student_id);
       return  student.prezime;
     }
+    
     if(djelatnik_id > 0){
-      let djelatnik = this.djelatnici.find(x => x.id === djelatnik_id);
+      let djelatnik = this.djelatnici.find(x => x.korisnik_id === djelatnik_id);
       return  djelatnik.prezime;
     }
     else{
-      return <string> ime;
+      return <string> prezime;
     }
   }
 
