@@ -16,7 +16,17 @@ export class DohvatiOdlucivanjeComponent  {
   
 
   constructor( private apiService: ApiService,  private message: NzMessageService ) {
-    this.dohvatiPodatke();
+   
+  }
+
+  ngOnInit(): void {
+    
+    this.startPolling(true);
+  }
+
+  ngOnDestroy(): void {
+    
+    this.stopPolling();
   }
 
   private dohvatiPodatke(): void {
@@ -29,21 +39,42 @@ export class DohvatiOdlucivanjeComponent  {
       this.radovi = response[1].data;
       this.statusRada =response[2].data;
     });
+
+    this.startPolling();
   }
   
-  public getNazivRada(radlId: number): string {
-    let rad = this.radovi.find(x => x.id === radlId);
-    return rad.naziv_hr;
+  public getNazivRada(rad_id: number): string {
+    let rad = this.radovi.find(x => x.id === rad_id);
+    return rad ? rad.naziv_hr : "";
   }
 
-  public getOpisRada(radlId: number): string {
-    let rad = this.radovi.find(x => x.id === radlId);
-    return rad.opis_hr;
+  public getOpisRada(rad_id: number): string {
+    let rad = this.radovi.find(x => x.id === rad_id);
+    return rad ? rad.opis_hr : "";
   }
 
-  public getstatusRada(radlId: number): string {
-    let status = this.statusRada.find(x => x.id === radlId);
-    return status.naziv;
+  public getstatusRada(rad_id: number): string {
+    let status = this.statusRada.find(x => x.id === rad_id);
+    return status ? status.naziv : "";
   }
+
+  
+  // ======== POLLING ========
+  private pollingTimerInstance = null;
+  
+  private startPolling(forceFetch?: boolean): void {
+    this.pollingTimerInstance = setTimeout(() => {
+      if(!this.pollingTimerInstance) return;
+      this.stopPolling(); 
+      this.dohvatiPodatke(); 
+    }, forceFetch ? 0 : 10*1000);
+ 
+  }
+
+  private stopPolling(): void {
+    clearTimeout(this.pollingTimerInstance);
+    this.pollingTimerInstance = null;
+  }
+
 
 }

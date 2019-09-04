@@ -18,7 +18,18 @@ export class DohvatiOdjelDjelatnikaComponent {
   public odjelidjelatnika: Array<OdjelDjelatnikaInterface> = [];
 
   constructor( private apiService: ApiService) {
-    this.dohvatiPodatke();
+    
+  }
+
+  
+  ngOnInit(): void {
+   
+    this.startPolling(true);
+  }
+
+  ngOnDestroy(): void {
+    
+    this.stopPolling();
   }
 
   private dohvatiPodatke(): void {
@@ -32,6 +43,8 @@ export class DohvatiOdjelDjelatnikaComponent {
       this.djelatnici = response[1].data;
       this.odjelidjelatnika = response[2].data;
     });
+
+    this.startPolling();
   }
 
   // === HTML METODE ===
@@ -49,6 +62,27 @@ export class DohvatiOdjelDjelatnikaComponent {
   public getNazivOdjela(odjelId: number): string {
     let odjeli = this.odjeli.find(x => x.id === odjelId);
     return odjeli.naziv;
+  }
+
+
+  
+  // ======== POLLING ========
+
+  
+  private pollingTimerInstance = null;
+  
+  private startPolling(forceFetch?: boolean): void {
+    this.pollingTimerInstance = setTimeout(() => {
+      if(!this.pollingTimerInstance) return;
+      this.stopPolling(); 
+      this.dohvatiPodatke(); 
+    }, forceFetch ? 0 : 10*1000);
+   
+  }
+
+  private stopPolling(): void {
+    clearTimeout(this.pollingTimerInstance);
+    this.pollingTimerInstance = null;
   }
 
 

@@ -17,6 +17,17 @@ export class DohvatiOdjelComponent  {
     this.dohvatiPodatke();
   }
 
+  
+  ngOnInit(): void {
+   
+    this.startPolling(true);
+  }
+
+  ngOnDestroy(): void {
+    
+    this.stopPolling();
+  }
+
   private dohvatiPodatke(): void {
     forkJoin(
       this.apiService.dohvatiFakultete(),
@@ -25,6 +36,8 @@ export class DohvatiOdjelComponent  {
       this.fakulteti = response[0].data;
       this.odjeli = response[1].data;
     });
+
+    this.startPolling();
   }
 
   // === HTML METODE ===
@@ -33,5 +46,24 @@ export class DohvatiOdjelComponent  {
     let fakultet = this.fakulteti.find(x => x.id === odjelId);
     return fakultet.naziv;
   }
+
+// ======== POLLING ========
+    private pollingTimerInstance = null;
+  
+    private startPolling(forceFetch?: boolean): void {
+      this.pollingTimerInstance = setTimeout(() => {
+        if(!this.pollingTimerInstance) return;
+        this.stopPolling(); 
+        this.dohvatiPodatke(); 
+      }, forceFetch ? 0 : 10*1000);
+     
+    }
+  
+    private stopPolling(): void {
+      clearTimeout(this.pollingTimerInstance);
+      this.pollingTimerInstance = null;
+    }
+  
+   
 
 }

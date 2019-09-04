@@ -65,13 +65,8 @@
                   nz-input
                   formControlName="komentar"
                 ></textarea>
-  
-                <input
-                  type="date"
-                  
-                  placeholder="datum"
-                  formControlName="datum"
-                />
+
+                
                 <button class="btn" (click)="this.kreirajKomentar()">
                   Spremi komentar
                 </button>
@@ -97,11 +92,7 @@
       <tr>
         <nz-comment
           *ngFor="let kron of this.kronologija"
-          nzAuthor="{{
-            this.getIme(kron.student_id, kron.djelatnik_id) +
-              ' ' +
-              this.getPrezime(kron.student_id, kron.djelatnik_id)
-          }}"
+          nzAuthor="{{ this.getPunoIme(kron.student_id,kron.djelatnik_id) }}"
           nzDatetime="{{ kron.datum }}"
         >
           <nz-avatar nz-comment-avatar nzIcon="user"></nz-avatar>
@@ -120,12 +111,12 @@
                   {{ kron.datoteka_ime }}
                   <br>
 
-                  
-              <button nz-button nzType="primary" nzShape="round" >
-                <i nz-icon type="download" (click)="this.skini()" ></i>
-                Download
-              </button>
-
+              <a [href]="kron.datoteka + '/' + kron.datoteka_ime" target="_blank" download>
+                <button nz-button nzType="primary" nzShape="round" >
+                  <i nz-icon type="download" ></i>
+                  Download
+                </button>
+              </a>
 
               </p>
 

@@ -8,13 +8,23 @@ import { NzMessageService } from 'ng-zorro-antd';
   templateUrl: './dohvati-ponudenu-temu.component.html',
   styleUrls: ['./dohvati-ponudenu-temu.component.scss']
 })
-export class DohvatiPonudenuTemuComponent  {
+export class DohvatiPonudenuTemuComponent {
 
   public ponudeneTeme: Array<any> = [];
   public djelatnici: Array<any> = [];
 
   constructor( private apiService: ApiService,private message: NzMessageService) {
-    this.dohvatiPodatke();
+    
+  }
+
+  ngOnInit(): void {
+    
+    this.startPolling(true);
+  }
+
+  ngOnDestroy(): void {
+    
+    this.stopPolling();
   }
 
   private dohvatiPodatke(): void {
@@ -25,11 +35,10 @@ export class DohvatiPonudenuTemuComponent  {
     ).subscribe((response) => {
       this.djelatnici = response[0].data;
       this.ponudeneTeme = response[1].data;
-      
+
+      this.startPolling();
     });
   }
-
-
 
   // === HTML METODE ===
   
@@ -52,13 +61,32 @@ export class DohvatiPonudenuTemuComponent  {
     if(type === 'success' ) {
       this.message.create(type, `Uspjesno je rezervirana tema`);
 
-      //TODO REFRESH STRANICE
+     
       
     }
     else {
       this.message.create(type, `Spremanje nije uspjelo`);
     }
 
+  }
+
+  // ======== POLLING ========
+
+  
+  private pollingTimerInstance = null;
+  
+  private startPolling(forceFetch?: boolean): void {
+    this.pollingTimerInstance = setTimeout(() => {
+      if(!this.pollingTimerInstance) return;
+      this.stopPolling(); 
+      this.dohvatiPodatke(); 
+    }, forceFetch ? 0 : 10*1000);
+ 
+  }
+
+  private stopPolling(): void {
+    clearTimeout(this.pollingTimerInstance);
+    this.pollingTimerInstance = null;
   }
 
 }

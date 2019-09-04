@@ -15,6 +15,10 @@ export class RadComponent implements OnInit {
   public myForm: FormGroup;
   private id;
 
+  public studenti: Array<any> = [];
+  public djelatnika: Array<any> = [];
+
+
   constructor(private fb: FormBuilder, private apiService: ApiService, private message: NzMessageService,private route: ActivatedRoute
   ) {
     this.init();
@@ -45,13 +49,35 @@ export class RadComponent implements OnInit {
 
   private init(): void {
     this.kreirajFormu();
+    this.dohvatiStudenta();
+    this.dohvatijDjelatnika();
   }
+
+  private dohvatiStudenta(): void {
+    this.apiService.dohvatiStudenta().subscribe(
+      response => this.studenti = response.data,
+
+      error => console.log(error)
+    );
+  }
+
+  private dohvatijDjelatnika(): void {
+    this.apiService.dohvatijDjelatnika().subscribe(
+      response => this.djelatnika = response.data,
+
+      error => console.log(error)
+    );
+  }
+
+
   
   private kreirajFormu(): void {
     this.myForm = this.fb.group({
 
       statusi_rada_id:'1',
-      student_id:'',
+
+      
+      student_id: '',
       djelatnik_id: '',
       naziv_hr: '',
       opis_hr: '',
@@ -82,7 +108,7 @@ export class RadComponent implements OnInit {
      
       this.myForm.value.student_id,
       this.myForm.value.id,
-      this.myForm.value.djelatnik_id
+      this.myForm.value.djelatnik_id,
         ).subscribe(
       response => console.log(response, this.createMessage('success')),
 

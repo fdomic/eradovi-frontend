@@ -48,7 +48,7 @@ export class PonudeneTemeComponent{
     this.myForm = this.fb.group({
      
       rad_id:'',
-      djelatnik_id: '',
+      djelatnik_id: localStorage.getItem("AUTH_id"),
       naziv_hr: '',
       opis_hr: '',
       naziv_eng: '',

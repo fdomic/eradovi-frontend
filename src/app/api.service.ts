@@ -34,6 +34,12 @@ export class ApiService {
     );
   }
 
+  public refresh(): Observable<LoginResponseInterface> {
+    return <any>(
+      this.http.get(this.url + "/refresh", this.getHttpOptions())
+    );
+  }
+
   //-------Korisnici---------------------------------------------------------------------
 
   public dohvatiKorisnika(id?: number): Observable<any> {
@@ -315,7 +321,7 @@ export class ApiService {
     return <any>this.http.get(this.url + "/komentar", this.getHttpOptions());
   }
 
-  public kreirajKomentar(komentar: string,datum:Date , id_rada: number, id?: number): Observable<kreirajKomentarInterface> {
+  public kreirajKomentar(komentar: string, datum: string , id_rada: number, id?: number): Observable<kreirajKomentarInterface> {
     let payload = {
       
       komentar: komentar,

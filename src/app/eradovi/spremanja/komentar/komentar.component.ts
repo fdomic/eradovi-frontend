@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
 import { NzMessageService } from 'ng-zorro-antd';
 import { forkJoin } from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-komentar',
@@ -17,14 +18,12 @@ export class KomentarComponent {
   public studenti: Array<any> = [];
   public djelatnici: Array<any> = [];
   public kronologija: Array<any> = [];
-
-
-  pomocna:0;
+  date = null;
   
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
-   
+    
     private message: NzMessageService,
     
     
@@ -58,7 +57,6 @@ export class KomentarComponent {
     this.myForm = this.fb.group({
       rad_id:"",
       komentar: "",
-      datum:"",
 
       naziv_hr:"",
       opis_hr:"",
@@ -68,12 +66,14 @@ export class KomentarComponent {
     });
   }
 
+  onChange(result: Date): void {
+    console.log('onChange: ', result);
+  }
 
   odabraniRad(){
     this.Kronologija(this.myForm.value.rad_id);
     
   }
-
   
   private Kronologija(rad_id): void {
     this.apiService.Kronologija(rad_id).subscribe(
@@ -92,8 +92,8 @@ export class KomentarComponent {
         this.myForm.patchValue({
           naziv_hr: rad.naziv_hr,
      
-          profesor:this.getIme(this.pomocna,rad.djelatnik_id) +' '+this.getPrezime(this.pomocna,rad.djelatnik_id),
-          student:this.getIme(rad.djelatnik_id,this.pomocna) +' '+this.getPrezime(rad.djelatnik_id,this.pomocna)
+          profesor:this.getPunoIme(-1, rad.djelatnik_id),
+          student:this.getPunoIme(rad.student_id, -1)
         });
       });
     
@@ -104,9 +104,14 @@ export class KomentarComponent {
 
   public kreirajKomentar(): void {
     this.apiService
-      .kreirajKomentar(this.myForm.value.komentar,this.myForm.value.datum ,this.myForm.value.rad_id)
+      .kreirajKomentar(this.myForm.value.komentar, moment().format("YYYY-MM-DD HH:mm:ss") ,this.myForm.value.rad_id)
       .subscribe(
-        response => console.log(response, this.createMessage("success")),
+        response => {
+          this.createMessage("success")
+          this.odabraniRad();
+          this.myForm.patchValue({ komentar: "" });
+          console.log(response);
+        },
         error => console.log(error, this.createMessage("error"))
       );
   }
@@ -120,18 +125,20 @@ export class KomentarComponent {
     }
   }
 
-  
+  public getPunoIme(student_id, djelatnik_id): string {
+    return this.getIme(student_id,djelatnik_id) + '' + this.getPrezime(student_id,djelatnik_id);
+  }
   
   public getIme(student_id?: number , djelatnik_id?:number ): string {
    
     let ime= "N.";
 
     if(student_id > 0){
-      let student = this.studenti.find(x => x.korisnik_id === student_id);
+      let student = this.studenti.find(x => x.id === student_id);
       return  student.ime;
     }
     if(djelatnik_id > 0){
-      let djelatnik = this.djelatnici.find(x => x.korisnik_id === djelatnik_id);
+      let djelatnik = this.djelatnici.find(x => x.id === djelatnik_id);
       return  djelatnik.ime;
     }
     else{
@@ -144,12 +151,12 @@ export class KomentarComponent {
     let prezime= "N.";
 
     if(student_id > 0){
-      let student = this.studenti.find(x => x.korisnik_id === student_id);
+      let student = this.studenti.find(x => x.id === student_id);
       return  student.prezime;
     }
     
     if(djelatnik_id > 0){
-      let djelatnik = this.djelatnici.find(x => x.korisnik_id === djelatnik_id);
+      let djelatnik = this.djelatnici.find(x => x.id === djelatnik_id);
       return  djelatnik.prezime;
     }
     else{
@@ -157,12 +164,9 @@ export class KomentarComponent {
     }
   }
 
-  public skini(datoteka:string ,datoteka_ime:string){
+  public skini(kron){
 
-    let path=datoteka+'/'+datoteka_ime;
-
-    console.log(path);
-
+    console.log(kron);
     
   }
 

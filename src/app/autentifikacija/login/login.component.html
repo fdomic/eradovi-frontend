@@ -1,14 +1,28 @@
-<div class="container">
-  <div class="wrapper">
-    <div class="contact-form">
-      <form class="box" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+
+
+  <div class="container">
+
+   
+
+    <div class="wrapper">
+      <div class="contact-form">
         
-            <input  type="text" name="email" [(ngModel)]="form.email" />
-        
-        
-        <input type="password" name="password" [(ngModel)]="form.password" />
-        <input type="submit" class="btn btn-success" value="Login" />
-      </form>
+     
+        <form class="box" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+          
+            <div class="logo">
+
+              </div>
+      
+
+
+              <input  type="text" name="email" [(ngModel)]="form.email" />
+          
+          
+          <input type="password" name="password" [(ngModel)]="form.password" />
+          <input type="submit" class="btn btn-success" value="Login" />
+        </form>
+      </div>
     </div>
   </div>
-</div>
+  

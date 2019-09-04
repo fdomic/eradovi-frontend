@@ -14,7 +14,17 @@ export class DohvatiRadComponent  {
   public radovi: Array<any> = [];
 
   constructor( private apiService: ApiService) {
-    this.dohvatiPodatke();
+    
+  }
+
+  ngOnInit(): void {
+    
+    this.startPolling(true);
+  }
+
+  ngOnDestroy(): void {
+    
+    this.stopPolling();
   }
 
   private dohvatiPodatke(): void {
@@ -26,6 +36,8 @@ export class DohvatiRadComponent  {
       this.djelatnici = response[0].data;
       this.studenti = response[1].data;
       this.radovi = response[2].data;
+
+      this.startPolling();
     });
   }
 
@@ -42,5 +54,26 @@ export class DohvatiRadComponent  {
     let student = this.studenti.find(x => x.id === student_id);
     return student.ime;
   }
+
+
+  
+  // ======== POLLING ========
+
+  private pollingTimerInstance = null;
+  
+  private startPolling(forceFetch?: boolean): void {
+    this.pollingTimerInstance = setTimeout(() => {
+      if(!this.pollingTimerInstance) return;
+      this.stopPolling(); 
+      this.dohvatiPodatke(); 
+    }, forceFetch ? 0 : 10*1000);
+    
+  }
+
+  private stopPolling(): void {
+    clearTimeout(this.pollingTimerInstance);
+    this.pollingTimerInstance = null;
+  }
+
 
 }
